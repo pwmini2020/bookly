@@ -8,8 +8,9 @@ on:
       - mobile
 jobs:
   publish:
-    env:
-      working-directory: ./mobile  
+    defaults:
+      run:
+       working-directory: ./mobile  
     name: Install and publish
     runs-on: ubuntu-latest
     steps:
