@@ -1,22 +1,23 @@
-import React, {useEffect, useState} from 'react';
-import {Text} from 'react-native';
-import TabSwitcher from "../../components/TabSwitcher";
+import React, {useEffect} from 'react';
 import {SafeAreaView} from "react-native";
 import Login from "../../components/Login";
+import TabSwitcher from "../../components/TabSwitcher";
 import {getSecurityTokenAsync} from "../../services/auth.service";
+import tokenState from "../../state";
 
 const HomeScreen = ({navigation, route}) => {
-    const [token, setToken] = useState(null);
+    const [token, setToken] = tokenState.use();
 
     useEffect(() => {
-            const checkToken = async () => {
-                const securityToken = await getSecurityTokenAsync();
-                if (securityToken) {
-                    setToken(securityToken);
-                }
-            };
-            checkToken();
-        },[token]);
+        const checkToken = async () => {
+            const securityToken = await getSecurityTokenAsync();
+            if (securityToken) {
+                setToken(securityToken);
+            }
+        };
+        //TODO: uncomment once backend is ready.
+        //checkToken();
+    }, [token]);
 
     return (
         <SafeAreaView style={{
@@ -24,7 +25,7 @@ const HomeScreen = ({navigation, route}) => {
             justifyContent: "center",
             alignItems: "center",
         }}>
-            {token ? <TabSwitcher/> : <Login setToken={setToken}/> }
+            {token ? <TabSwitcher/> : <Login/>}
         </SafeAreaView>
     )
 }

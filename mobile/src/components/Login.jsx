@@ -1,21 +1,28 @@
 import React, {useState} from 'react';
-import { SafeAreaView, TextInput, TouchableOpacity, Text } from "react-native";
-import {authenticateUserAsync} from "../services/auth.service";
+import {
+    SafeAreaView,
+    TextInput,
+    TouchableOpacity,
+    Text
+} from "react-native";
 import {errorToast} from "../helpers/toast.helper";
+import {authenticateUserAsync} from "../services/auth.service";
+import tokenState from "../state";
 
-const Login = ({ setToken }) => {
+const Login = () => {
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
+    const [token, setToken] = tokenState.use();
 
     const logIn = () => {
-       if(!login.trim()) {
-           errorToast("Provide login.");
-           return;
-       }
-       if(!password.trim()) {
-           errorToast("Provide password.");
-           return;
-       }
+        if (!login.trim()) {
+            errorToast("Provide login.");
+            return;
+        }
+        if (!password.trim()) {
+            errorToast("Provide password.");
+            return;
+        }
 
         const credentials = {
             login,
@@ -24,16 +31,15 @@ const Login = ({ setToken }) => {
 
         authenticateUserAsync(credentials)
             .then(token => {
-                if(token) {
+                if (token) {
                     setToken(token);
-                }
-                else {
+                } else {
                     errorToast('Please, provide correct login and password.')
                 }
             });
     }
 
-    return(
+    return (
         <SafeAreaView>
             <Text>Welcome to Bookly app!</Text>
             <TextInput
@@ -52,7 +58,7 @@ const Login = ({ setToken }) => {
                 clearButtonMode="while-editing"
                 textContentType="password"
             />
-            <TouchableOpacity onPress={()=>logIn()}>
+            <TouchableOpacity onPress={() => logIn()}>
                 <Text>Login</Text>
             </TouchableOpacity>
         </SafeAreaView>
