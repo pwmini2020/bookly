@@ -9,7 +9,7 @@ on:
     branches: 
       - master
     paths:
-      - mobile/**""  
+      - "mobile/**"  
 jobs:
   publish:
     defaults:
