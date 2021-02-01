@@ -4,12 +4,12 @@ on:
     branches:
       - master
     paths:
-      - mobile/**""  
+      - "mobile/**"
   pull_request:
     branches: 
       - master
     paths:
-      - "mobile/**"  
+      - "mobile/**"
 jobs:
   publish:
     defaults:
