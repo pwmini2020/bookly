@@ -1,11 +1,12 @@
+// we will use it once everyone stops commiting directly to main
 name: Expo Bookly Publish
 on:
   push:
     branches:
-      - mobile
+      - main
   pull_request:
     branches: 
-      - mobile
+      - main
 jobs:
   publish:
     defaults:
@@ -24,4 +25,4 @@ jobs:
           expo-username: errlobo
           expo-password: Nbx2qBrpAGw3h4Z
       - run: yarn install
-      - run: expo publish
+      - run: yarn deploy

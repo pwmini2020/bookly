@@ -6,24 +6,16 @@ import {errorToast} from "../helpers/toast.helper";
 const Login = ({ setToken }) => {
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
-    const [loginEmpty, setLoginEmpty] = useState(false);
-    const [passwordEmpty, setPasswordEmpty] = useState(false);
-
-    const inputCorrect = () => {
-        if(!password.trim()) {
-            setPasswordEmpty(true);
-        }
-        if(!login.trim()) {
-            setLoginEmpty(true)
-        }
-        return !(loginEmpty || passwordEmpty);
-    }
 
     const logIn = () => {
-        if(inputCorrect()) {
-            errorToast('Please, provide login and password.');
-            return;
-        }
+       if(!login.trim()) {
+           errorToast("Provide login.");
+           return;
+       }
+       if(!password.trim()) {
+           errorToast("Provide password.");
+           return;
+       }
 
         const credentials = {
             login,
@@ -43,8 +35,9 @@ const Login = ({ setToken }) => {
 
     return(
         <SafeAreaView>
+            <Text>Welcome to Bookly app!</Text>
             <TextInput
-                autoFocus={true}
+                autoFocus={false}
                 placeholder="Login"
                 value={login}
                 onChangeText={text => setLogin(text)}
