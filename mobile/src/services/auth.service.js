@@ -1,41 +1,32 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {SECURITY_TOKEN} from '@env';
+import {SECURITY_TOKEN, TOKEN_STRING} from '@env';
 import tokenState from "../state";
+import {getItemAsync, removeItemAsync, setItemAsync} from "../helpers/asyncStorage.helper";
+import {errorToast} from "../helpers/toast.helper";
 
 export const authenticateUserAsync = async (credentials) => {
     //TODO: fetch backend (once it is actually done)
-    await setSecurityTokenAsync(SECURITY_TOKEN);
-    return SECURITY_TOKEN;
+    let token = null;
+    if(process.env.APP_ENV === 'development') {
+        token = SECURITY_TOKEN;
+    }
+    if(token) {
+        await setItemAsync(TOKEN_STRING, token);
+        tokenState.set(token);
+    }
+    else {
+        errorToast('Please, provide correct login and password.');
+    }
 }
 
-export const logoutUserAsync = async() => {
-    await removeSecurityTokenAsync();
+export const logoutUserAsync = async () => {
+    await removeItemAsync(TOKEN_STRING);
     tokenState.reset();
 }
 
-export const setSecurityTokenAsync = async (token) => {
-    try {
-        await AsyncStorage.setItem('@security_token', token)
-    } catch (e) {
-        // saving error
+export const tryRestoreUserAsync = async () => {
+    const token = await getItemAsync(TOKEN_STRING);
+    if (token) {
+        tokenState.set(token);
     }
 }
-
-export const getSecurityTokenAsync = async () => {
-    try {
-        const jsonValue = await AsyncStorage.getItem('@security_token');
-        //TODO change SEC_TOK to null, once API is ready.
-        return jsonValue ? JSON.parse(jsonValue) : SECURITY_TOKEN;
-    } catch (e) {
-        // saving error
-    }
-}
-
-export const removeSecurityTokenAsync = async () => {
-    try {
-        await AsyncStorage.removeItem('@security_token');
-    } catch (e) {
-        // saving error
-    }
-}
-

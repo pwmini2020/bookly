@@ -12,9 +12,8 @@ import tokenState from "../state";
 const Login = () => {
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
-    const [token, setToken] = tokenState.use();
 
-    const logIn = () => {
+    const logIn = async () => {
         if (!login.trim()) {
             errorToast("Provide login.");
             return;
@@ -29,14 +28,7 @@ const Login = () => {
             password
         };
 
-        authenticateUserAsync(credentials)
-            .then(token => {
-                if (token) {
-                    setToken(token);
-                } else {
-                    errorToast('Please, provide correct login and password.')
-                }
-            });
+        authenticateUserAsync(credentials);
     }
 
     return (
@@ -58,7 +50,7 @@ const Login = () => {
                 clearButtonMode="while-editing"
                 textContentType="password"
             />
-            <TouchableOpacity onPress={() => logIn()}>
+            <TouchableOpacity onPress={async () => await logIn()}>
                 <Text>Login</Text>
             </TouchableOpacity>
         </SafeAreaView>

@@ -2,21 +2,14 @@ import React, {useEffect} from 'react';
 import {SafeAreaView} from "react-native";
 import Login from "../../components/Login";
 import TabSwitcher from "../../components/TabSwitcher";
-import {getSecurityTokenAsync} from "../../services/auth.service";
 import tokenState from "../../state";
 
 const HomeScreen = ({navigation, route}) => {
-    const [token, setToken] = tokenState.use();
+    const token = tokenState.useValue();
 
     useEffect(() => {
-        const checkToken = async () => {
-            const securityToken = await getSecurityTokenAsync();
-            if (securityToken) {
-                setToken(securityToken);
-            }
-        };
-        //TODO: uncomment once backend is ready.
-        //checkToken();
+        //TODO: uncomment once backend is connected.
+        //tryRestoreUserAsync();
     }, [token]);
 
     return (
