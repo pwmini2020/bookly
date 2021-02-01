@@ -11,7 +11,9 @@ import tokenState from "./src/state";
 export default function App() {
     const Stack = createStackNavigator();
 
-    const [token, setToken] = tokenState.use();
+    const token = tokenState.useValue();
+
+    const appEnv = process.env.APP_ENV;
 
     const logoutButton = () => (token ?
             <TouchableOpacity
@@ -26,13 +28,11 @@ export default function App() {
             <Stack.Navigator initialRouteName="Home">
                 <Stack.Screen name="Home"
                               component={HomeScreen}
-                              options={
-                                  {
-                                      headerShown: true,
-                                      headerTitle: 'Bookly',
-                                      headerRight: logoutButton
-                                  }
-                              }
+                              options={{
+                                  headerShown: true,
+                                  headerTitle: `Bookly${appEnv !== 'production' ? ` [${appEnv}]`  : ""}`,
+                                  headerRight: logoutButton
+                              }}
                 />
             </Stack.Navigator>
             <Toast ref={(ref) => Toast.setRef(ref)}/>

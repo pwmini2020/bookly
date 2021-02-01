@@ -22,7 +22,7 @@
     "@babel/core": "~7.9.0"
   },
   "scripts": {
-    "start": "APP_ENV=development expo start",
+    "start": "APP_ENV=development NODE_ENV=development expo start",
     "deploy": "APP_ENV=production expo publish",
     "deploy:staging": "APP_ENV=staging expo publish",
     "android": "expo start --android",
