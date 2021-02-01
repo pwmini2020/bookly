@@ -1,12 +1,15 @@
-// we will use it once everyone stops commiting directly to main
 name: Expo Bookly Publish
 on:
   push:
     branches:
-      - main
+      - master
+    paths:
+      - mobile/**""  
   pull_request:
     branches: 
-      - main
+      - master
+    paths:
+      - mobile/**""  
 jobs:
   publish:
     defaults:
