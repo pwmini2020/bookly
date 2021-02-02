@@ -8,6 +8,8 @@ import loggedUserReducer from "./reducers/loggedUserReducer";
 import newUserFormReducer from "./reducers/newUserFormReducer";
 import usersReducer from "./reducers/usersReducer";
 
+import LoginPage from "./pages/LoginPage";
+
 const rootReducer = combineReducers({
   bookings: bookingsReducer,
   loggedUser: loggedUserReducer,
@@ -23,7 +25,7 @@ const store = createStore(
 function App() {
   return (
     <Provider store={store}>
-      <h1>Hello Bookly!</h1>
+      <LoginPage />
     </Provider>
   );
 }
