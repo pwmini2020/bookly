@@ -5,7 +5,6 @@ import reduxThunk from "redux-thunk";
 
 import bookingsReducer from "./reducers/bookingsReducer";
 import loggedUserReducer from "./reducers/loggedUserReducer";
-import newUserFormReducer from "./reducers/newUserFormReducer";
 import usersReducer from "./reducers/usersReducer";
 
 import LoginPage from "./pages/LoginPage";
@@ -13,7 +12,6 @@ import LoginPage from "./pages/LoginPage";
 const rootReducer = combineReducers({
   bookings: bookingsReducer,
   loggedUser: loggedUserReducer,
-  newUserForm: newUserFormReducer,
   users: usersReducer,
 });
 
