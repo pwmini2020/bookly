@@ -1,5 +1,3 @@
-import Navbar from "../components/Navbar";
-
 const AddUserPage = (props) => {
   return (
     <div>
