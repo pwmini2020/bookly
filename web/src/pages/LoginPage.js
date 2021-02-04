@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { useState } from "react";
 import { loginUser } from "../actionCreators/userActionCreator";
 
 const mapDispatchToProps = (dispatch) => ({
@@ -10,16 +11,42 @@ const mapStateToProps = (state) => ({
 });
 
 const LoginPage = (props) => {
-  const fakeUsername = "testUser";
-  const fakePassword = "test1234";
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const submitCredentials = (e, username, password) => {
+    e.preventDefault();
+    props.loginUser(username, password);
+  };
 
   return (
     <div>
-      <h1>login page</h1>
-      <button onClick={() => props.loginUser(fakeUsername, fakePassword)}>
-        Login with fake credentials
-      </button>
-      {props.loginFailed ? <p>login failed</p> : <div></div>}
+      <h1>Login</h1>
+      <p>test username:password --- testUser:test1234</p>
+
+      <form onSubmit={(e) => submitCredentials(e, username, password)}>
+        <label htmlFor="username">Username: </label>
+        <input
+          type="text"
+          name="username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <br />
+
+        <label htmlFor="username">Password: </label>
+        <input
+          type="password"
+          name="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <br />
+
+        <input type="submit" value="Login" />
+      </form>
+
+      {props.loginFailed && <p>login failed</p>}
     </div>
   );
 };
