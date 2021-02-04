@@ -10,6 +10,18 @@ export const saveToken = (token) => {
   };
 };
 
+export const eraseToken = () => {
+  return {
+    type: "ERASE_TOKEN",
+  };
+};
+
+export const logoutUser = () => {
+  return {
+    type: "LOGOUT",
+  };
+};
+
 export const loginUser = (login, password) => {
   return async (dispatch) => {
     try {

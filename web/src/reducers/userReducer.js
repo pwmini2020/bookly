@@ -3,7 +3,7 @@ const initialState = { isLoggedIn: false };
 const userReducer = (state = initialState, action) => {
   if (action.error) {
     console.error(
-      "ERROR (loggedUserReducer reducer)",
+      "ERROR (userReducer reducer)",
       action.type,
       action.payload,
       action.meta
@@ -19,6 +19,13 @@ const userReducer = (state = initialState, action) => {
       };
     }
 
+    case "ERASE_TOKEN": {
+      return {
+        ...state,
+        token: "",
+      };
+    }
+
     case "LOGIN_SUCCEEDED": {
       return {
         ...state,
@@ -26,6 +33,7 @@ const userReducer = (state = initialState, action) => {
       };
     }
 
+    case "LOGOUT":
     case "LOGIN_FAILED": {
       return {
         ...state,
