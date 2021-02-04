@@ -15,13 +15,11 @@ const createCredentialsBody = (login, password) => {
 };
 
 export const authenticateCredentials = (login, password) => {
-  fetch(`${API_URL}/v1/login/`, {
+  return fetch(`${API_URL}/v1/login/`, {
     method: "POST",
     headers: {
       "Content-type": "application/json;charset=UTF-8",
     },
     body: createCredentialsBody(login, password),
-  })
-    .then((res) => res.json())
-    .catch((e) => console.error(e));
+  }).then((res) => res.json());
 };
