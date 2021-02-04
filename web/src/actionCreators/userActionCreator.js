@@ -28,7 +28,7 @@ export const loginUser = (login, password) => {
       const response = await authenticateCredentials(login, password);
       dispatch(saveToken(response.token));
       dispatch(loginSucceeded());
-      // route to summary
+      // redirect to summary
     } catch (error) {
       console.error(error);
       dispatch(loginFailed());
