@@ -4,6 +4,8 @@ import AddUserPage from "../pages/AddUserPage";
 import AllUsersPage from "../pages/AllUsersPage";
 import NotFoundPage from "../pages/NotFoundPage";
 
+import Header from "../components/Header";
+
 import {
   BrowserRouter as Router,
   Route,
@@ -14,6 +16,8 @@ import {
 const AppRouter = (props) => {
   return (
     <Router>
+      <Header />
+
       <Switch>
         <Route exact path="/">
           <Redirect to="/login" />

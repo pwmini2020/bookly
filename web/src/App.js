@@ -9,8 +9,6 @@ import bookingsReducer from "./reducers/bookingsReducer";
 import loggedUserReducer from "./reducers/loggedUserReducer";
 import usersReducer from "./reducers/usersReducer";
 
-import Header from "./components/Header";
-
 const rootReducer = combineReducers({
   bookings: bookingsReducer,
   loggedUser: loggedUserReducer,
@@ -26,7 +24,6 @@ function App() {
   return (
     <div>
       <Provider store={store}>
-        <Header />
         <AppRouter />
       </Provider>
     </div>
