@@ -1,5 +1,16 @@
+import { Link } from "react-router-dom";
+
+import "../styles/Header.css";
+
 const Header = (props) => {
-  return <h2>HEADER</h2>;
+  return (
+    <div className="Header">
+      <Link to="/">
+        <h1>Bookly.com</h1>
+      </Link>
+      <p>All your bookings in one place</p>
+    </div>
+  );
 };
 
 export default Header;
