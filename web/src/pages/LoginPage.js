@@ -5,6 +5,10 @@ const mapDispatchToProps = (dispatch) => ({
   loginUser: (username, password) => dispatch(loginUser(username, password)),
 });
 
+const mapStateToProps = (state) => ({
+  loginFailed: state.loginPage.loginFailed,
+});
+
 const LoginPage = (props) => {
   const fakeUsername = "testUser";
   const fakePassword = "test1234";
@@ -15,8 +19,9 @@ const LoginPage = (props) => {
       <button onClick={() => props.loginUser(fakeUsername, fakePassword)}>
         Login with fake credentials
       </button>
+      {props.loginFailed ? <p>login failed</p> : <div></div>}
     </div>
   );
 };
 
-export default connect(() => ({}), mapDispatchToProps)(LoginPage);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
