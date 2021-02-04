@@ -8,11 +8,13 @@ import AppRouter from "./components/AppRouter";
 import bookingsReducer from "./reducers/bookingsReducer";
 import loggedUserReducer from "./reducers/loggedUserReducer";
 import usersReducer from "./reducers/usersReducer";
+import loginPageReducer from "./reducers/loginPageReducer";
 
 const rootReducer = combineReducers({
   bookings: bookingsReducer,
   loggedUser: loggedUserReducer,
   users: usersReducer,
+  loginPage: loginPageReducer,
 });
 
 const store = createStore(
