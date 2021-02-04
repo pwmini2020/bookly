@@ -1,10 +1,9 @@
 const bcrypt = require("bcryptjs");
 
 const API_URL = process.env.REACT_APP_API_URL;
-const SECURITY_TOKEN = process.env.REACT_APP_SECRET_TOKEN;
 
 const getPasswordHash = (password) => {
-  const rounds = 12;
+  const rounds = 6;
   return bcrypt.hashSync(password, rounds);
 };
 
@@ -16,15 +15,13 @@ const createCredentialsBody = (login, password) => {
 };
 
 export const authenticateCredentials = (login, password) => {
-  fetch(`${API_URL}/v1/login`, {
+  fetch(`${API_URL}/v1/login/`, {
     method: "POST",
     headers: {
-      "Security-Token": SECURITY_TOKEN,
-      "Content-Type": "application/json",
+      "Content-type": "application/json;charset=UTF-8",
     },
     body: createCredentialsBody(login, password),
   })
     .then((res) => res.json())
-    .then((json) => console.log(json))
-    .catch((e) => alert(e));
+    .catch((e) => console.error(e));
 };
