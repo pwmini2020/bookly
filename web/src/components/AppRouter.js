@@ -14,6 +14,7 @@ import {
   Redirect,
   Switch,
 } from "react-router-dom";
+import Navbar from "./Navbar";
 
 const mapStateToProps = (state) => ({
   userIsLoggedIn: state.user.isLoggedIn,
@@ -23,6 +24,7 @@ const AppRouter = (props) => {
   return (
     <Router>
       <Header />
+      {props.userIsLoggedIn && <Navbar />}
 
       <Switch>
         <Route exact path="/">
