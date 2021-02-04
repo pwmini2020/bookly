@@ -20,7 +20,6 @@ export const loginUser = (login, password) => {
     } catch (error) {
       console.error(error);
       dispatch(loginFailed());
-      // display info that login failed
     }
   };
 };
