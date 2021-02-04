@@ -1,4 +1,6 @@
-const loggedUserReducer = (state = {}, action) => {
+const initialState = { isLoggedIn: false };
+
+const userReducer = (state = initialState, action) => {
   if (action.error) {
     console.error(
       "ERROR (loggedUserReducer reducer)",
@@ -17,9 +19,23 @@ const loggedUserReducer = (state = {}, action) => {
       };
     }
 
+    case "LOGIN_SUCCEEDED": {
+      return {
+        ...state,
+        isLoggedIn: true,
+      };
+    }
+
+    case "LOGIN_FAILED": {
+      return {
+        ...state,
+        isLoggedIn: false,
+      };
+    }
+
     default:
       return state;
   }
 };
 
-export default loggedUserReducer;
+export default userReducer;

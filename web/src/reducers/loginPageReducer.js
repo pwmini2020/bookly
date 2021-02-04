@@ -1,4 +1,6 @@
-const loginPageReducer = (state = {}, action) => {
+const initialState = { loginFailed: false };
+
+const loginPageReducer = (state = initialState, action) => {
   if (action.error) {
     console.error(
       "ERROR (loginPageReducer reducer)",
@@ -10,17 +12,17 @@ const loginPageReducer = (state = {}, action) => {
   }
 
   switch (action.type) {
-    case "LOGIN_FAILED": {
-      return {
-        ...state,
-        loginFailed: true,
-      };
-    }
-
     case "LOGIN_SUCCEEDED": {
       return {
         ...state,
         loginFailed: false,
+      };
+    }
+
+    case "LOGIN_FAILED": {
+      return {
+        ...state,
+        loginFailed: true,
       };
     }
 
