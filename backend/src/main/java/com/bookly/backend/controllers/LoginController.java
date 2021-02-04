@@ -1,6 +1,7 @@
 package com.bookly.backend.controllers;
 
 import com.bookly.backend.models.Credentials;
+import com.bookly.backend.models.Token;
 import com.bookly.backend.models.User;
 import com.bookly.backend.services.UserService;
 import io.swagger.annotations.Api;
@@ -22,14 +23,14 @@ public class LoginController {
 
     private final UserService userService;
 
-    @PostMapping("/")
+    @PostMapping
     @ApiOperation(value = "Login to the system")
     public ResponseEntity<?> login(@RequestBody Credentials credentials) {
         User user = userService.tryGetUserByLogin(credentials.getLogin()).orElse(null);
         if (user != null) {
-            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(6);
             if (encoder.matches(user.getPassword(), credentials.getPassword())) {
-                return new ResponseEntity<>(user.getSecurityToken(), HttpStatus.OK);
+                return new ResponseEntity<>(new Token(user.getSecurityToken()), HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
             }

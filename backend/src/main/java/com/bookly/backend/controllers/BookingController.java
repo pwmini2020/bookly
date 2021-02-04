@@ -20,7 +20,7 @@ public class BookingController {
 
     private final BookingService bookingService;
 
-    @GetMapping("/")
+    @GetMapping
     @ApiOperation(value = "Fetches all the bookings with possibility to add a filter")
     @ApiImplicitParam(name = "Security-Token", paramType = "header", dataTypeClass = String.class)
     public ResponseEntity<List<Booking>> getBookings(@RequestParam(required = false) String filter) {
@@ -42,7 +42,7 @@ public class BookingController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping("/")
+    @PostMapping
     @ApiOperation(value = "Adds new booking to the database")
     @ApiImplicitParam(name = "Security-Token", paramType = "header", dataTypeClass = String.class)
     public ResponseEntity<Booking> addNewBooking(@RequestBody Booking newBooking) {
