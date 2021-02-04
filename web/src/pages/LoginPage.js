@@ -1,18 +1,22 @@
-import { authenticateCredentials } from "../api/loginApi";
+import { connect } from "react-redux";
+import { loginUser } from "../actionCreators/loggedUserActionCreator";
+
+const mapDispatchToProps = (dispatch) => ({
+  loginUser: (username, password) => dispatch(loginUser(username, password)),
+});
 
 const LoginPage = (props) => {
   const fakeUsername = "testUser";
   const fakePassword = "test1234";
+
   return (
     <div>
       <h1>login page</h1>
-      <button
-        onClick={() => authenticateCredentials(fakeUsername, fakePassword)}
-      >
+      <button onClick={() => props.loginUser(fakeUsername, fakePassword)}>
         Login with fake credentials
       </button>
     </div>
   );
 };
 
-export default LoginPage;
+export default connect(() => ({}), mapDispatchToProps)(LoginPage);
