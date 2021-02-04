@@ -6,12 +6,18 @@ import NotFoundPage from "../pages/NotFoundPage";
 
 import Header from "../components/Header";
 
+import { connect } from "react-redux";
+
 import {
   BrowserRouter as Router,
   Route,
   Redirect,
   Switch,
 } from "react-router-dom";
+
+const mapStateToProps = (state) => ({
+  userIsLoggedIn: state.user.isLoggedIn,
+});
 
 const AppRouter = (props) => {
   return (
@@ -20,7 +26,11 @@ const AppRouter = (props) => {
 
       <Switch>
         <Route exact path="/">
-          <Redirect to="/login" />
+          {props.userIsLoggedIn ? (
+            <Redirect to="/summary" />
+          ) : (
+            <Redirect to="/login" />
+          )}
         </Route>
         <Route path="/login" component={LoginPage} />
         <Route path="/summary" component={SummaryPage} />
@@ -32,4 +42,4 @@ const AppRouter = (props) => {
   );
 };
 
-export default AppRouter;
+export default connect(mapStateToProps, () => ({}))(AppRouter);
