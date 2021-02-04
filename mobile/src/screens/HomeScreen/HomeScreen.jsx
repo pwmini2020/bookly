@@ -15,10 +15,10 @@ const HomeScreen = ({navigation, route}) => {
     return (
         <SafeAreaView style={{
             flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
+//            justifyContent: "center",
+//            alignItems: "center",
         }}>
-            {token ? <TabSwitcher/> : <Login/>}
+            {!token ? <TabSwitcher/> : <Login/>}
         </SafeAreaView>
     )
 }
