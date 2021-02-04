@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { loginUser } from "../actionCreators/loggedUserActionCreator";
+import { loginUser } from "../actionCreators/userActionCreator";
 
 const mapDispatchToProps = (dispatch) => ({
   loginUser: (username, password) => dispatch(loginUser(username, password)),

@@ -6,13 +6,13 @@ import reduxThunk from "redux-thunk";
 import AppRouter from "./components/AppRouter";
 
 import bookingsReducer from "./reducers/bookingsReducer";
-import loggedUserReducer from "./reducers/loggedUserReducer";
+import userReducer from "./reducers/userReducer";
 import usersReducer from "./reducers/usersReducer";
 import loginPageReducer from "./reducers/loginPageReducer";
 
 const rootReducer = combineReducers({
   bookings: bookingsReducer,
-  loggedUser: loggedUserReducer,
+  user: userReducer,
   users: usersReducer,
   loginPage: loginPageReducer,
 });
