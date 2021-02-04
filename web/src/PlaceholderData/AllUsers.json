@@ -1,0 +1,14 @@
+[
+    {
+        "username": "user1",
+        "lastActive": "2021-02-04T18:28:04.804Z"
+    },
+    {
+        "username": "user2",
+        "lastActive": "2020-11-18T18:28:04.804Z"
+    },
+    {
+        "username": "user3",
+        "lastActive": "2021-02-02T18:28:04.804Z"
+    }
+]
