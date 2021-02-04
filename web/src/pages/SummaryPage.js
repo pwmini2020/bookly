@@ -1,5 +1,12 @@
+import Navbar from "../components/Navbar";
+
 const SummaryPage = (props) => {
-  return <h1>summary page</h1>;
+  return (
+    <div>
+      <Navbar />
+      <h1>summary page</h1>
+    </div>
+  );
 };
 
 export default SummaryPage;

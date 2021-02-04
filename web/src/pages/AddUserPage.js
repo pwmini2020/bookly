@@ -1,5 +1,12 @@
+import Navbar from "../components/Navbar";
+
 const AddUserPage = (props) => {
-  return <h1>add user page</h1>;
+  return (
+    <div>
+      <Navbar />
+      <h1>add user page</h1>
+    </div>
+  );
 };
 
 export default AddUserPage;
