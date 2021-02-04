@@ -4,7 +4,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 const SECURITY_TOKEN = process.env.REACT_APP_SECRET_TOKEN;
 
 const getPasswordHash = (password) => {
-  const rounds = 6;
+  const rounds = 12;
   return bcrypt.hashSync(password, rounds);
 };
 
