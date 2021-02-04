@@ -4,7 +4,8 @@ import AddUserPage from "../pages/AddUserPage";
 import AllUsersPage from "../pages/AllUsersPage";
 import NotFoundPage from "../pages/NotFoundPage";
 
-import Header from "../components/Header";
+import Header from "./Header";
+import Navbar from "./Navbar";
 
 import { connect } from "react-redux";
 
@@ -14,7 +15,6 @@ import {
   Redirect,
   Switch,
 } from "react-router-dom";
-import Navbar from "./Navbar";
 
 const mapStateToProps = (state) => ({
   userIsLoggedIn: state.user.isLoggedIn,
