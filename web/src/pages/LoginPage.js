@@ -1,8 +1,8 @@
 import { authenticateCredentials } from "../api/loginApi";
 
 const LoginPage = (props) => {
-  const fakeUsername = "testUsername";
-  const fakePassword = "testPass";
+  const fakeUsername = "testUser";
+  const fakePassword = "test1234";
   return (
     <div>
       <h1>login page</h1>
