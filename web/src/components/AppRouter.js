@@ -25,14 +25,11 @@ const AppRouter = (props) => {
     <Router>
       <Header />
       {props.userIsLoggedIn && <Navbar />}
-
       <Switch>
+        {!props.userIsLoggedIn && <Route path="/" component={LoginPage} />}
+
         <Route exact path="/">
-          {props.userIsLoggedIn ? (
-            <Redirect to="/summary" />
-          ) : (
-            <Redirect to="/login" />
-          )}
+          <Redirect to="/summary" />
         </Route>
         <Route path="/login" component={LoginPage} />
         <Route path="/summary" component={SummaryPage} />
