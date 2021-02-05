@@ -1,4 +1,4 @@
-import { authenticateCredentials } from "../api/userApi";
+import { authenticateCredentials } from "../api/userAuthApi";
 import {
   loginFailed,
   loginSucceeded,

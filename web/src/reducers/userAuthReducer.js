@@ -1,6 +1,6 @@
 const initialState = { isLoggedIn: false };
 
-const userReducer = (state = initialState, action) => {
+const userAuthReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SAVE_TOKEN": {
       return {
@@ -36,4 +36,4 @@ const userReducer = (state = initialState, action) => {
   }
 };
 
-export default userReducer;
+export default userAuthReducer;

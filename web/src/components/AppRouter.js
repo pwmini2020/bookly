@@ -17,7 +17,7 @@ import {
 } from "react-router-dom";
 
 const mapStateToProps = (state) => ({
-  userIsLoggedIn: state.user.isLoggedIn,
+  userIsLoggedIn: state.userAuth.isLoggedIn,
 });
 
 const AppRouter = (props) => {

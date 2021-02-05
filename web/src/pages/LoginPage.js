@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
-import { loginUser } from "../actionCreators/userActionCreator";
+import { loginUser } from "../actionCreators/userAuthActionCreator";
 
 const mapDispatchToProps = (dispatch) => ({
   loginUser: (username, password) => dispatch(loginUser(username, password)),
@@ -9,7 +9,7 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => ({
   loginFailed: state.loginPage.loginFailed,
   loginInProgress: state.loginPage.loginInProgress,
-  userIsLoggedIn: state.user.isLoggedIn,
+  userIsLoggedIn: state.userAuth.isLoggedIn,
 });
 
 const LoginPage = (props) => {
