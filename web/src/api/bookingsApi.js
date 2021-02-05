@@ -8,3 +8,7 @@ export const getAll = (token) => {
     },
   }).then((res) => res.json());
 };
+
+export const getFilteredBookings = (filterSettings) => {
+  return [];
+};
