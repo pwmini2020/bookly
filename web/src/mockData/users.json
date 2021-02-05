@@ -1,13 +1,16 @@
 [
     {
+        "id": 1,
         "username": "user1",
         "lastActive": "2021-02-04T18:28:04.804Z"
     },
     {
+        "id": 2,
         "username": "user2",
         "lastActive": "2020-11-18T18:28:04.804Z"
     },
     {
+        "id": 3,
         "username": "user3",
         "lastActive": "2021-02-02T18:28:04.804Z"
     }

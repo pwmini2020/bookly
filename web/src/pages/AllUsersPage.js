@@ -12,14 +12,15 @@ const AllUsersPage = (props) => {
           style={{ background: "lightgray", height: "30px" }}
         >
           <div className="UserListItemColumn" style={{ flex: 0.4 }}>
-            <text style={{ fontWeight: "bold" }}>Username</text>
+            <p style={{ fontWeight: "bold" }}>Username</p>
           </div>
           <div className="UserListItemColumn" style={{ flex: 0.6 }}>
-            <text style={{ fontWeight: "bold" }}>Last Active</text>
+            <p style={{ fontWeight: "bold" }}>Last Active</p>
           </div>
         </div>
         {UserData.map((user) => (
           <UserListItem
+            key={user.id}
             t1={user.username}
             t2={new Date(user.lastActive).toDateString()}
           />
