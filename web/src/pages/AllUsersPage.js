@@ -20,6 +20,7 @@ const AllUsersPage = (props) => {
         </div>
         {UserData.map((user) => (
           <UserListItem
+            key={user.id}
             t1={user.username}
             t2={new Date(user.lastActive).toDateString()}
           />
