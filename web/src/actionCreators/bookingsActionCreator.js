@@ -22,7 +22,7 @@ const fetchBookingsFailed = () => {
 
 const saveBookings = (bookings) => {
   return {
-    type: "SAVE_BOOKINGS",
+    type: "SAVE_FETCHED_BOOKINGS",
     payload: {
       bookings: bookings,
     },

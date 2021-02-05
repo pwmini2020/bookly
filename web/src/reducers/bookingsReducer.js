@@ -34,7 +34,7 @@ const bookingsReducer = (state = initialState, action) => {
       };
     }
 
-    case "SAVE_BOOKINGS": {
+    case "SAVE_FETCHED_BOOKINGS": {
       return {
         ...state,
         bookings: action.payload.bookings,
