@@ -1,4 +1,8 @@
-const initialState = { requestFailed: false, requestInProgress: false };
+const initialState = {
+  requestFailed: false,
+  requestInProgress: false,
+  requestWasSent: false,
+};
 
 const newUserReducer = (state = initialState, action) => {
   if (action.error) {
@@ -32,6 +36,7 @@ const newUserReducer = (state = initialState, action) => {
       return {
         ...state,
         requestInProgress: true,
+        requestWasSent: true,
       };
     }
 

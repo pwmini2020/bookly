@@ -10,6 +10,7 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => ({
   requestFailed: state.newUser.requestFailed,
   requestInProgress: state.newUser.requestInProgress,
+  requestWasSent: state.newUser.requestWasSent,
 });
 
 const AddUserPage = (props) => {
@@ -34,6 +35,16 @@ const AddUserPage = (props) => {
   const submitNewUserData = (e, newUserData) => {
     e.preventDefault();
     props.createNewUser(newUserData);
+  };
+
+  const displayProgress = () => {
+    if (props.requestInProgress) {
+      return <p>request in progress...</p>;
+    } else if (props.requestFailed) {
+      return <p>request failed</p>;
+    } else if (!props.requestFailed && props.requestWasSent) {
+      return <p>success</p>;
+    }
   };
 
   return (
@@ -100,8 +111,7 @@ const AddUserPage = (props) => {
           value="Generate a password and create a new user"
         />
       </form>
-      {props.requestInProgress && <p>request in progress...</p>}
-      {props.requestFailed && <p>request failed</p>}
+      {displayProgress()}
     </div>
   );
 };
