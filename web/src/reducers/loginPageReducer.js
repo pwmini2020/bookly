@@ -1,16 +1,6 @@
 const initialState = { loginFailed: false, loginInProgress: false };
 
 const loginPageReducer = (state = initialState, action) => {
-  if (action.error) {
-    console.error(
-      "ERROR (loginPageReducer reducer)",
-      action.type,
-      action.payload,
-      action.meta
-    );
-    return state;
-  }
-
   switch (action.type) {
     case "LOGIN_IN_PROGRESS": {
       return {
