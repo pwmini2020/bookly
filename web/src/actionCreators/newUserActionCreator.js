@@ -1,4 +1,4 @@
-// import function from api to create new users
+import { postNewUser } from "../api/newUserApi";
 
 const newUserRequestFailed = () => {
   return {
@@ -22,7 +22,7 @@ export const createNewUser = (newUserData) => {
   return async (dispatch) => {
     try {
       dispatch(newUserRequestInProgress());
-      await (() => {}); // use the imported api function
+      await postNewUser(newUserData);
       dispatch(newUserRequestSucceeded());
     } catch (error) {
       console.error(error);

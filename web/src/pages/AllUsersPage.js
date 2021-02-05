@@ -1,4 +1,4 @@
-import UserData from "../PlaceholderData/AllUsers.json";
+import UserData from "../mockData/users.json";
 import UserListItem from "../components/UserListItem";
 import NavButtons from "../components/NavButtons";
 

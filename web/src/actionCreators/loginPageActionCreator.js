@@ -9,3 +9,9 @@ export const loginSucceeded = () => {
     type: "LOGIN_SUCCEEDED",
   };
 };
+
+export const loginInProgress = () => {
+  return {
+    type: "LOGIN_IN_PROGRESS",
+  };
+};

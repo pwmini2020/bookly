@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { eraseToken, logoutUser } from "../actionCreators/userActionCreator";
+import {
+  eraseToken,
+  logoutUser,
+} from "../actionCreators/userAuthActionCreator";
 
 import "../styles/Navbar.css";
 

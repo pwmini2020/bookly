@@ -1,16 +1,6 @@
 const initialState = { isLoggedIn: false };
 
-const userReducer = (state = initialState, action) => {
-  if (action.error) {
-    console.error(
-      "ERROR (userReducer reducer)",
-      action.type,
-      action.payload,
-      action.meta
-    );
-    return state;
-  }
-
+const userAuthReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SAVE_TOKEN": {
       return {
@@ -46,4 +36,4 @@ const userReducer = (state = initialState, action) => {
   }
 };
 
-export default userReducer;
+export default userAuthReducer;
