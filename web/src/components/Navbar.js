@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 import { connect } from "react-redux";
 
 import { eraseToken, logoutUser } from "../actionCreators/userActionCreator";
