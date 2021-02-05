@@ -1,4 +1,4 @@
-import { postNewUser } from "../api/userApi";
+import { postNewUser } from "../api/newUserApi";
 
 const newUserRequestFailed = () => {
   return {
