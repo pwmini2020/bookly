@@ -1,5 +1,9 @@
 import { authenticateCredentials } from "../api/loginApi";
-import { loginFailed, loginSucceeded } from "./loginPageActionCreator";
+import {
+  loginFailed,
+  loginSucceeded,
+  loginInProgress,
+} from "./loginPageActionCreator";
 
 export const saveToken = (token) => {
   return {
@@ -25,6 +29,7 @@ export const logoutUser = () => {
 export const loginUser = (login, password) => {
   return async (dispatch) => {
     try {
+      dispatch(loginInProgress());
       const response = await authenticateCredentials(login, password);
       dispatch(saveToken(response.token));
       dispatch(loginSucceeded());

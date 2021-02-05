@@ -8,6 +8,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
   loginFailed: state.loginPage.loginFailed,
+  loginInProgress: state.loginPage.loginInProgress,
   userIsLoggedIn: state.user.isLoggedIn,
 });
 
@@ -15,7 +16,7 @@ const LoginPage = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  // after a user logins switch the page to /summary
+  // after a user logs in switch the page to /summary
   useEffect(() => {
     if (props.userIsLoggedIn) {
       props.history.push("/summary");
@@ -53,7 +54,7 @@ const LoginPage = (props) => {
 
         <input type="submit" value="Login" />
       </form>
-
+      {props.loginInProgress && <p>logging in...</p>}
       {props.loginFailed && <p>login failed</p>}
     </div>
   );
