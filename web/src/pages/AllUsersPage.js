@@ -38,5 +38,3 @@ const AllUsersPage = (props) => {
 };
 
 export default AllUsersPage;
-
-//
