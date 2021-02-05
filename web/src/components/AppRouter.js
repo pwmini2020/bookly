@@ -25,6 +25,7 @@ const AppRouter = (props) => {
     <Router>
       <Header />
       {props.userIsLoggedIn && <Navbar />}
+
       <Switch>
         {!props.userIsLoggedIn && <Route path="/" component={LoginPage} />}
 
