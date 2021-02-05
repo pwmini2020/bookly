@@ -1,6 +1,13 @@
 import { useState } from "react";
+import { connect } from "react-redux";
+
+import { filterBookings } from "../actionCreators/bookingsActionCreator";
 
 import "../styles/BookingsFilterPanel.css";
+
+const mapDispatchToProps = (dispatch) => ({
+  filterBookings: (filterSettings) => dispatch(filterBookings(filterSettings)),
+});
 
 const BookingsFilterPanel = (props) => {
   const [username, setUsername] = useState("");
@@ -16,10 +23,12 @@ const BookingsFilterPanel = (props) => {
       parkingBookingsSelected: parkingBookingsSelected,
     };
   };
+
   const submitFilterSettings = (e, filterSettings) => {
     e.preventDefault();
     props.filterBookings(filterSettings);
   };
+
   return (
     <div className="BookingsFilterPanel">
       <h1>filter panel</h1>
@@ -57,9 +66,11 @@ const BookingsFilterPanel = (props) => {
           value={parkingBookingsSelected}
           onChange={(e) => setParkingBookingsSelected(e.target.checked)}
         />
+
+        <input type="submit" value="Filter" />
       </form>
     </div>
   );
 };
 
-export default BookingsFilterPanel;
+export default connect(() => ({}), mapDispatchToProps)(BookingsFilterPanel);
