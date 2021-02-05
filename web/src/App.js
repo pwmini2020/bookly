@@ -9,12 +9,14 @@ import bookingsReducer from "./reducers/bookingsReducer";
 import userReducer from "./reducers/userReducer";
 import usersReducer from "./reducers/usersReducer";
 import loginPageReducer from "./reducers/loginPageReducer";
+import newUserReducer from "./reducers/newUserReducer";
 
 const rootReducer = combineReducers({
   bookings: bookingsReducer,
   user: userReducer,
   users: usersReducer,
   loginPage: loginPageReducer,
+  newUser: newUserReducer,
 });
 
 const store = createStore(
