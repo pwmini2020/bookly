@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { loginUser } from "../actionCreators/userActionCreator";
 
 const mapDispatchToProps = (dispatch) => ({
@@ -8,11 +8,19 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
   loginFailed: state.loginPage.loginFailed,
+  userIsLoggedIn: state.user.isLoggedIn,
 });
 
 const LoginPage = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  // after a user logins switch the page to /summary
+  useEffect(() => {
+    if (props.userIsLoggedIn) {
+      props.history.push("/summary");
+    }
+  }, [props.userIsLoggedIn, props.history]);
 
   const submitCredentials = (e, username, password) => {
     e.preventDefault();
