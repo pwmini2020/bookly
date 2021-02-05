@@ -1,3 +1,4 @@
+
 import Navbar from "../components/Navbar";
 import UserData from "../PlaceholderData/AllUsers.json"
 import UserListItem from "../components/UserListItem"
@@ -6,7 +7,6 @@ import NavButtons from "../components/NavButtons"
 const AllUsersPage = (props) => {
   return (
     <div>
-      <Navbar />
       <h1>all users page</h1>
       <div className="UserList">
         <div className="UserListItem" style={{background: "lightgray", height: "30px"}}>

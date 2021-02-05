@@ -1,8 +1,21 @@
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
+import { eraseToken, logoutUser } from "../actionCreators/userActionCreator";
 
 import "../styles/Navbar.css";
 
+const mapDispatchToProps = (dispatch) => ({
+  eraseToken: () => dispatch(eraseToken()),
+  logoutUser: () => dispatch(logoutUser()),
+});
+
 const Navbar = (props) => {
+  const logout = () => {
+    props.eraseToken();
+    props.logoutUser();
+  };
+
   return (
     <div className="Navbar">
       <Link to="/summary">
@@ -16,8 +29,10 @@ const Navbar = (props) => {
       <Link to="/allUsers">
         <p>Show All Users</p>
       </Link>
+
+      <button onClick={() => logout()}>Logout</button>
     </div>
   );
 };
 
-export default Navbar;
+export default connect(() => ({}), mapDispatchToProps)(Navbar);

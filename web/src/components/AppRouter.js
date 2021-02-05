@@ -4,7 +4,10 @@ import AddUserPage from "../pages/AddUserPage";
 import AllUsersPage from "../pages/AllUsersPage";
 import NotFoundPage from "../pages/NotFoundPage";
 
-import Header from "../components/Header";
+import Header from "./Header";
+import Navbar from "./Navbar";
+
+import { connect } from "react-redux";
 
 import {
   BrowserRouter as Router,
@@ -13,14 +16,21 @@ import {
   Switch,
 } from "react-router-dom";
 
+const mapStateToProps = (state) => ({
+  userIsLoggedIn: state.user.isLoggedIn,
+});
+
 const AppRouter = (props) => {
   return (
     <Router>
       <Header />
+      {props.userIsLoggedIn && <Navbar />}
 
       <Switch>
+        {!props.userIsLoggedIn && <Route path="/" component={LoginPage} />}
+
         <Route exact path="/">
-          <Redirect to="/login" />
+          <Redirect to="/summary" />
         </Route>
         <Route path="/login" component={LoginPage} />
         <Route path="/summary" component={SummaryPage} />
@@ -32,4 +42,4 @@ const AppRouter = (props) => {
   );
 };
 
-export default AppRouter;
+export default connect(mapStateToProps, () => ({}))(AppRouter);
