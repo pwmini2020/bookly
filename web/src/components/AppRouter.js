@@ -27,12 +27,16 @@ const AppRouter = (props) => {
       {props.userIsLoggedIn && <Navbar />}
 
       <Switch>
-        {!props.userIsLoggedIn && <Route path="/" component={LoginPage} />}
+        <Route path="/login" component={LoginPage} />
+        {!props.userIsLoggedIn && (
+          <Route path="/">
+            <Redirect to="/login" />
+          </Route>
+        )}
 
         <Route exact path="/">
           <Redirect to="/summary" />
         </Route>
-        <Route path="/login" component={LoginPage} />
         <Route path="/summary" component={SummaryPage} />
         <Route path="/addUser" component={AddUserPage} />
         <Route path="/allUsers" component={AllUsersPage} />
