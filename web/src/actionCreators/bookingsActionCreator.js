@@ -1,4 +1,4 @@
-// import the function with filtering of bookings
+import { getFilteredBookings } from "../api/bookingsApi";
 
 const fetchBookingsInProgress = () => {
   return {
@@ -33,7 +33,7 @@ export const filterBookings = (filterSettings) => {
   return async (dispatch) => {
     try {
       dispatch(fetchBookingsInProgress());
-      const response = []; // await (() => {}); // add the imported function with
+      const response = await getFilteredBookings(filterSettings);
       dispatch(saveBookings(response));
       dispatch(fetchBookingsSucceeded());
     } catch (error) {
