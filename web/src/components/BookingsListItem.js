@@ -5,10 +5,6 @@ const BookingsListItem = (props) => {
     console.log("more details clicked");
   };
 
-  const modifyBooking = () => {
-    console.log("modify clicked");
-  };
-
   const deleteBooking = () => {
     console.log("delete clicked");
   };
@@ -78,12 +74,7 @@ const BookingsListItem = (props) => {
         </div>
         {displayDetailsSummaryColumn()}
         <div className="buttonsColumn">
-          <div className="buttonsRow">
-            <button onClick={() => modifyBooking()}>Modify</button>
-          </div>
-          <div className="buttonsRow">
-            <button onClick={() => deleteBooking()}>Delete</button>
-          </div>
+          <button onClick={() => deleteBooking()}>Delete</button>
         </div>
       </div>
     </div>
