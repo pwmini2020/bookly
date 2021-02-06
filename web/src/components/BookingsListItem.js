@@ -1,10 +1,9 @@
 import "../styles/BookingsListItem.css";
+import DetailsDisplay from "./DetailsDisplay";
+
+import Popup from "reactjs-popup";
 
 const BookingsListItem = (props) => {
-  const seeMoreDetails = () => {
-    console.log("more details clicked");
-  };
-
   const deleteBooking = () => {
     console.log("delete clicked");
   };
@@ -49,7 +48,7 @@ const BookingsListItem = (props) => {
         return <div>unexpected booking type</div>;
     }
   };
-
+  //<button onClick={() => seeMoreDetails()}>More...</button>
   return (
     <div className="bookingsListRow">
       <div className="usernameColumn">{props.data.Username}</div>
@@ -63,7 +62,15 @@ const BookingsListItem = (props) => {
         <div className="detailsColumn">
           {displayTypeSpecificRows()}
           <div className="detailsRow">
-            <button onClick={() => seeMoreDetails()}>More...</button>
+            <Popup
+              trigger={<button>More...</button>}
+              position="left center"
+              closeOnDocumentClick
+              closeOnEscape
+              repositionOnResize
+            >
+              <DetailsDisplay data={props.data} />
+            </Popup>
           </div>
         </div>
         <div className="buttonsColumn">
