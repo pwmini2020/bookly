@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import {
-    SafeAreaView,
+    View,
     TextInput,
     TouchableOpacity,
     Text
 } from "react-native";
 import {errorToast} from "../helpers/toast.helper";
 import {authenticateUserAsync} from "../services/auth.service";
-import tokenState from "../state";
+import bcrypt from 'react-native-bcrypt';
 
 const Login = () => {
     const [login, setLogin] = useState("");
@@ -23,16 +23,19 @@ const Login = () => {
             return;
         }
 
+        const hash = await Promise.resolve(bcrypt.hashSync(password, 6));
+
         const credentials = {
             login,
-            password
+            password: hash
         };
 
-        authenticateUserAsync(credentials);
+        await authenticateUserAsync(credentials);
+
     }
 
     return (
-        <SafeAreaView>
+        <View>
             <Text>Welcome to Bookly app!</Text>
             <TextInput
                 autoFocus={false}
@@ -53,7 +56,7 @@ const Login = () => {
             <TouchableOpacity onPress={async () => await logIn()}>
                 <Text>Login</Text>
             </TouchableOpacity>
-        </SafeAreaView>
+        </View>
     )
 }
 

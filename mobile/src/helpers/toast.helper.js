@@ -7,3 +7,11 @@ export const errorToast = (message) => {
         text2: message
     });
 }
+
+export const successToast = (message) => {
+    Toast.show({
+        type: 'success',
+        text1: 'Success!',
+        text2: message
+    })
+}
