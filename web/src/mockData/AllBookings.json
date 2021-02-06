@@ -1,0 +1,49 @@
+[
+    {
+        "id": 1,
+        "ownerId": 1,
+        "bookingType": "Car",
+        "startDate": "2021-02-04T18:28:04.804Z",
+        "endDate": "2021-02-05T18:28:04.804Z",
+        "Username": "coolguy_1",
+        "Details":{
+            "dailyPrice:":	100,
+            "description":	"It's a car",
+            "id": 1,
+            "location":	"Nowogradzka 36",
+            "model":	"Toyota Yaris",
+            "plateNumber":	"ERA75TM"
+        }
+    },
+    {
+        "id": 2,
+        "ownerId": 1,
+        "bookingType": "Parking",
+        "startDate": "2021-02-04T18:28:04.804Z",
+        "endDate": "2021-02-05T18:28:04.804Z",
+        "Username": "coolguy_1",
+        "Details":{
+            "dailyPrice:":	50,
+            "description":	"It's a parking spot",
+            "id": 1,
+            "location":	"Nowogradzka 36",
+            "Space no":	2
+        }
+    },
+    {
+        "id": 3,
+        "ownerId": 2,
+        "bookingType": "Parking",
+        "startDate": "2021-01-04T18:28:04.804Z",
+        "endDate": "2021-03-05T18:28:04.804Z",
+        "Username": "call_me_flatly",
+        "Details":{
+            "dailyPrice:":	200,
+            "description":	"It's a flat",
+            "id": 1,
+            "location":	"Nowogradzka 36",
+            "Number_of_rooms": 3
+        }
+    }
+
+]
