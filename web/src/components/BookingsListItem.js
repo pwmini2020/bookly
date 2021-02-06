@@ -46,7 +46,7 @@ const BookingsListItem = (props) => {
         );
 
       default:
-        return <div className="detailsColumn">unexpected booking type</div>;
+        return <div>unexpected booking type</div>;
     }
   };
 
