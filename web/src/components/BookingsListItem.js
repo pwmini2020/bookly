@@ -48,7 +48,7 @@ const BookingsListItem = (props) => {
         return <div>unexpected booking type</div>;
     }
   };
-  //<button onClick={() => seeMoreDetails()}>More...</button>
+
   return (
     <div className="bookingsListRow">
       <div className="usernameColumn">{props.data.Username}</div>
