@@ -9,50 +9,38 @@ const BookingsListItem = (props) => {
     console.log("delete clicked");
   };
 
-  const displayDetailsSummaryColumn = () => {
+  const displayTypeSpecificRows = () => {
     switch (props.data.bookingType) {
       case "Car":
         return (
-          <div className="detailsColumn">
+          <div>
             <div className="detailsRow">Model: {props.data.Details.model}</div>
             <div className="detailsRow">
               Plate numbers: {props.data.Details.plateNumber}
-            </div>
-
-            <div className="detailsRow">
-              <button onClick={() => seeMoreDetails()}>More...</button>
             </div>
           </div>
         );
 
       case "Flat":
         return (
-          <div className="detailsColumn">
+          <div>
             <div className="detailsRow">
               Bedrooms: {props.data.Details.Number_of_rooms}
             </div>
             <div className="detailsRow">
               Location: {props.data.Details.location}
             </div>
-
-            <div className="detailsRow">
-              <button onClick={() => seeMoreDetails()}>More...</button>
-            </div>
           </div>
         );
 
       case "Parking":
         return (
-          <div className="detailsColumn">
+          <div>
             <div className="detailsRow">
               Parking spot number: {props.data.Details.SpaceNo}
             </div>
             <div className="detailsRow">
               Location: {props.data.Details.location}
-            </div>
-
-            <div className="detailsRow">
-              <button onClick={() => seeMoreDetails()}>More...</button>
             </div>
           </div>
         );
@@ -72,7 +60,12 @@ const BookingsListItem = (props) => {
           <div className="dateRow">Start date: {props.data.startDate}</div>
           <div className="dateRow">End date: {props.data.endDate}</div>
         </div>
-        {displayDetailsSummaryColumn()}
+        <div className="detailsColumn">
+          {displayTypeSpecificRows()}
+          <div className="detailsRow">
+            <button onClick={() => seeMoreDetails()}>More...</button>
+          </div>
+        </div>
         <div className="buttonsColumn">
           <button onClick={() => deleteBooking()}>Delete</button>
         </div>
