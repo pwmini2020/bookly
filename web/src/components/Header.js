@@ -1,14 +1,11 @@
 import { Link } from "react-router-dom";
 
-import "../styles/Header.css";
-
 const Header = (props) => {
   return (
-    <div className="Header">
+    <div className="navbar navbar-expand-md navbar-dark bg-primary sticky-top">
       <Link to="/">
-        <h1>Bookly.com</h1>
+        <h1 className="text-light">Bookly.com</h1>
       </Link>
-      <p>All your bookings in one place</p>
     </div>
   );
 };
