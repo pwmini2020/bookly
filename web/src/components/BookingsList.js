@@ -7,7 +7,7 @@ const BookingsList = (props) => {
   return (
     <div>
       {bookingsData.map((booking) => (
-        <BookingsListItem key={booking.id} />
+        <BookingsListItem key={booking.id} data={booking} />
       ))}
 
       <NavButtons
