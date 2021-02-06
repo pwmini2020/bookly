@@ -33,10 +33,10 @@ const BookingsListItem = (props) => {
         return (
           <div className="detailsColumn">
             <div className="detailsRow">
-              bedrooms: {props.data.Details.Number_of_rooms}
+              Bedrooms: {props.data.Details.Number_of_rooms}
             </div>
             <div className="detailsRow">
-              location: {props.data.Details.location}
+              Location: {props.data.Details.location}
             </div>
 
             <div className="detailsRow">
