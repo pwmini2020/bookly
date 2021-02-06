@@ -2,6 +2,8 @@ import UserData from "../mockData/users.json";
 import UserListItem from "../components/UserListItem";
 import NavButtons from "../components/NavButtons";
 
+import { Card } from "react-bootstrap";
+
 const AllUsersPage = (props) => {
   const fetchNextPage = () => {
     console.log("Next button pressed");
