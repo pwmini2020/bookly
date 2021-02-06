@@ -7,7 +7,7 @@
         "endDate": "2021-02-05T18:28:04.804Z",
         "Username": "coolguy_1",
         "Details":{
-            "dailyPrice:":	100,
+            "dailyPrice":	100,
             "description":	"It's a car",
             "id": 1,
             "location":	"Nowogradzka 36",
@@ -23,7 +23,7 @@
         "endDate": "2021-02-05T18:28:04.804Z",
         "Username": "coolguy_1",
         "Details":{
-            "dailyPrice:":	50,
+            "dailyPrice":	50,
             "description":	"It's a parking spot",
             "id": 1,
             "location":	"Nowogradzka 36",
@@ -38,7 +38,7 @@
         "endDate": "2021-03-05T18:28:04.804Z",
         "Username": "call_me_flatly",
         "Details":{
-            "dailyPrice:":	200,
+            "dailyPrice":	200,
             "description":	"It's a flat",
             "id": 1,
             "location":	"Nowogradzka 36",
