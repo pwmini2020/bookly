@@ -1,7 +1,6 @@
 {
 	"expo": {
 		"name": "Bookly Mobile App",
-		"slug": "bookly-mobile",
-		"owner": "bookly"
+		"slug": "bookly-mobile"
 	}
 }

@@ -1,7 +1,10 @@
 import React, {useEffect} from 'react';
-import {SafeAreaView} from "react-native";
+import {SafeAreaView, View} from "react-native";
 import Login from "../../components/Login";
 import TabSwitcher from "../../components/TabSwitcher";
+import SearchCarsTab from "../../components/SearchCarsTab.jsx"
+import SearchFlatsTab from "../../components/SearchFlatsTab.jsx"
+import SearchParkingTab from "../../components/SearchParkingTab.jsx"
 import tokenState from "../../state";
 
 const HomeScreen = ({navigation, route}) => {
@@ -13,13 +16,20 @@ const HomeScreen = ({navigation, route}) => {
     }, [token]);
 
     return (
-        <SafeAreaView style={{
+        <View style={{
             flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
+//            justifyContent: "center",
+//            alignItems: "center",
         }}>
-            {token ? <TabSwitcher/> : <Login/>}
-        </SafeAreaView>
+            {!token ? 
+				<TabSwitcher
+					activeCars = <SearchCarsTab/>
+					activeFlats = <SearchFlatsTab/>
+					activeParking = <SearchParkingTab/>
+				/> 
+				: 
+				<Login/>}
+        </View>
     )
 }
 
