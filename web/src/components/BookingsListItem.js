@@ -1,4 +1,4 @@
-import "../styles/BookingsListItem";
+import "../styles/BookingsListItem.css";
 
 const BookingsListItem = (props) => {
   const displayDetailsSummaryColumn = () => {
@@ -47,7 +47,7 @@ const BookingsListItem = (props) => {
   };
 
   return (
-    <div>
+    <div className="bookingsListRow">
       <div className="usernameColumn">{props.data.Username}</div>
       <div className="bookingTypeColumn">{props.data.bookingType}</div>
       <div className="bookingIdColumn">{props.data.id}</div>
