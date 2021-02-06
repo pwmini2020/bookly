@@ -1,7 +1,7 @@
 import BookingsFilterPanel from "../components/BookingsFilterPanel";
 import BookingsList from "../components/BookingsList";
 
-import MockBookings from "../mockData/AllBookings.json";
+import MockBookings from "../mockData/allBookings.json";
 import DetailsDisplay from "../components/DetailsDisplay";
 
 const SummaryPage = (props) => {
