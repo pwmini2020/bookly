@@ -2,6 +2,7 @@ import bookingsData from "../mockData/allBookings.json";
 
 import BookingsListItem from "./BookingsListItem";
 import NavButtons from "./NavButtons";
+import Table from "react-bootstrap/Table";
 
 import "../styles/BookingsListItem.css";
 
@@ -16,16 +17,23 @@ const BookingsList = (props) => {
 
   return (
     <div>
-      <div className="bookingsListRow">
-        <div className="usernameColumn">Username</div>
-        <div className="bookingTypeColumn">Type</div>
-        <div className="bookingIdColumn">ID</div>
-        <div className="bookingDetailsColumn">Details</div>
-      </div>
-
-      {bookingsData.map((booking) => (
-        <BookingsListItem key={booking.id} data={booking} />
-      ))}
+      <Table bordered variant="secondary">
+        <thead>
+          <tr>
+            <th width="15%">Username</th>
+            <th width="10%">Type</th>
+            <th width="10%">ID</th>
+            <th width="65%" colSpan="3">
+              Details
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {bookingsData.map((booking) => (
+            <BookingsListItem key={booking.id} data={booking} />
+          ))}
+        </tbody>
+      </Table>
 
       <NavButtons
         pageNumber={1}

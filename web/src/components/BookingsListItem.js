@@ -1,6 +1,6 @@
 import "../styles/BookingsListItem.css";
 import DetailsDisplay from "./DetailsDisplay";
-
+import Button from "react-bootstrap/Button";
 import Popup from "reactjs-popup";
 
 const BookingsListItem = (props) => {
@@ -50,34 +50,39 @@ const BookingsListItem = (props) => {
   };
 
   return (
-    <div className="bookingsListRow">
-      <div className="usernameColumn">{props.data.Username}</div>
-      <div className="bookingTypeColumn">{props.data.bookingType}</div>
-      <div className="bookingIdColumn">{props.data.id}</div>
-      <div className="bookingDetailsColumn">
-        <div className="dateColumn">
-          <div className="dateRow">Start date: {props.data.startDate}</div>
-          <div className="dateRow">End date: {props.data.endDate}</div>
+    <tr>
+      <td>{props.data.Username}</td>
+      <td>{props.data.bookingType}</td>
+      <td>{props.data.id}</td>
+      <td>
+        Start date: {new Date(props.data.startDate).toDateString()}
+        <br />
+        End date: {new Date(props.data.endDate).toDateString()}
+      </td>
+      <td>
+        {displayTypeSpecificRows()}
+        <div className="detailsRow">
+          <Popup
+            trigger={
+              <Button variant="info" size="sm">
+                More...
+              </Button>
+            }
+            position="left center"
+            closeOnDocumentClick
+            closeOnEscape
+            repositionOnResize
+          >
+            <DetailsDisplay data={props.data} />
+          </Popup>
         </div>
-        <div className="detailsColumn">
-          {displayTypeSpecificRows()}
-          <div className="detailsRow">
-            <Popup
-              trigger={<button>More...</button>}
-              position="left center"
-              closeOnDocumentClick
-              closeOnEscape
-              repositionOnResize
-            >
-              <DetailsDisplay data={props.data} />
-            </Popup>
-          </div>
-        </div>
-        <div className="buttonsColumn">
-          <button onClick={() => deleteBooking()}>Delete</button>
-        </div>
-      </div>
-    </div>
+      </td>
+      <td>
+        <Button variant="danger" onClick={() => deleteBooking()}>
+          Delete
+        </Button>
+      </td>
+    </tr>
   );
 };
 
