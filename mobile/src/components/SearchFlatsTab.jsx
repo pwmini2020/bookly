@@ -93,7 +93,7 @@ const SearchFlatsTab = () => {
 			title={"Location"}
 			message={"Choose Location for your booking"}
 			hintInput={"e.g. Warsaw"}
-			submitInput={(inputText) => {setLocation(inputText.trim()); setLocationShow(false)}}
+			submitInput={(inputText) => {if(inputText===undefined){inputText=""}setLocation(inputText.trim()); setLocationShow(false)}}
 			closeDialog={() => setLocationShow(false)}
 		/>
 		<DialogInput 
@@ -103,6 +103,7 @@ const SearchFlatsTab = () => {
 			textInputProps={{keyboardType: "numeric"}}
 			hintInput={"e.g. 3"}
 			submitInput={(inputText) => {
+				if(inputText===undefined){inputText=""}
 				if(verify(inputText.trim())){
 					setFlatsNo(inputText.trim());
 					setFlatsShow(false)

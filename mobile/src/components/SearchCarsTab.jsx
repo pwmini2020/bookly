@@ -68,7 +68,7 @@ const SearchCarsTab = () => {
 			title={"Location"}
 			message={"Choose Location for your booking"}
 			hintInput={"e.g. Warsaw"}
-			submitInput={(inputText) => {setLocation(inputText.trim()); setLocationShow(false)}}
+			submitInput={(inputText) => {if(inputText===undefined){inputText=""}setLocation(inputText.trim()); setLocationShow(false)}}
 			closeDialog={() => setLocationShow(false)}
 		/>
 		<DialogInput 
@@ -76,7 +76,7 @@ const SearchCarsTab = () => {
 			title={"Car Type"}
 			message={"Choose Car Type for your booking"}
 			hintInput={"e.g. Ferrari idk"}
-			submitInput={(inputText) => {setCarType(inputText.trim()); setCarTypeShow(false)}}
+			submitInput={(inputText) => {if(inputText===undefined){inputText=""}setCarType(inputText.trim()); setCarTypeShow(false)}}
 			closeDialog={() => setCarTypeShow(false)}
 		/>
 		</>

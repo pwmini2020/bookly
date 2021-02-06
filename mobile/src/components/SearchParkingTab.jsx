@@ -66,7 +66,7 @@ const SearchParkingTab = () => {
 			title={"Location"}
 			message={"Choose Location for your booking"}
 			hintInput={"e.g. Warsaw"}
-			submitInput={(inputText) => {setLocation(inputText.trim()); setLocationShow(false)}}
+			submitInput={(inputText) => {if(inputText===undefined){inputText=""}setLocation(inputText.trim()); setLocationShow(false)}}
 			closeDialog={() => setLocationShow(false)}
 		/>
 		<DialogInput 
@@ -74,7 +74,7 @@ const SearchParkingTab = () => {
 			title={"Parking Type"}
 			message={"Choose Parking Type for your booking"}
 			hintInput={"e.g. Underground"}
-			submitInput={(inputText) => {setParkingType(inputText.trim()); setParkingTypeShow(false)}}
+			submitInput={(inputText) => {if(inputText===undefined){inputText=""}setParkingType(inputText.trim()); setParkingTypeShow(false)}}
 			closeDialog={() => setParkingTypeShow(false)}
 		/>
 		</>
