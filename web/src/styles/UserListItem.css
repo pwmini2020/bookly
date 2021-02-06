@@ -1,21 +1,4 @@
 .UserList {
-  width: 500px;
+  width: 600px;
   margin: auto;
-}
-
-.UserListItem {
-  border-width: 1px;
-  border-style: solid;
-  width: 100%;
-  height: 40px;
-  margin: auto;
-  display: flex;
-}
-
-.UserListItemColumn {
-  border-width: 1px;
-  border-style: solid;
-  display: flex;
-  align-items: center;
-  padding: 0px;
 }

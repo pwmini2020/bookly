@@ -2,7 +2,7 @@ import UserData from "../mockData/users.json";
 import UserListItem from "../components/UserListItem";
 import NavButtons from "../components/NavButtons";
 
-import { Card } from "react-bootstrap";
+import Table from "react-bootstrap/Table";
 
 const AllUsersPage = (props) => {
   const fetchNextPage = () => {
@@ -16,24 +16,23 @@ const AllUsersPage = (props) => {
   return (
     <div>
       <div className="UserList">
-        <div
-          className="UserListItem"
-          style={{ background: "lightgray", height: "30px" }}
-        >
-          <div className="UserListItemColumn" style={{ flex: 0.4 }}>
-            <p style={{ fontWeight: "bold" }}>Username</p>
-          </div>
-          <div className="UserListItemColumn" style={{ flex: 0.6 }}>
-            <p style={{ fontWeight: "bold" }}>Last Active</p>
-          </div>
-        </div>
-        {UserData.map((user) => (
-          <UserListItem
-            key={user.id}
-            t1={user.username}
-            t2={new Date(user.lastActive).toDateString()}
-          />
-        ))}
+        <Table striped bordered variant="secondary">
+          <thead>
+            <tr>
+              <th width="40%">Username</th>
+              <th>Last Active</th>
+            </tr>
+          </thead>
+          <tbody>
+            {UserData.map((user) => (
+              <UserListItem
+                key={user.id}
+                t1={user.username}
+                t2={new Date(user.lastActive).toDateString()}
+              />
+            ))}
+          </tbody>
+        </Table>
         <NavButtons
           pageNumber={1}
           pageTotal={10}
