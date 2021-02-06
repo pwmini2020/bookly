@@ -4,7 +4,6 @@ import BookingsList from "../components/BookingsList";
 const SummaryPage = (props) => {
   return (
     <div>
-      <h1>summary page</h1>
       <BookingsList />
       <BookingsFilterPanel />
     </div>

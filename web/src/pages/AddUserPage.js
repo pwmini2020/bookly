@@ -49,8 +49,6 @@ const AddUserPage = (props) => {
 
   return (
     <div>
-      <h1>add user page</h1>
-
       <form onSubmit={(e) => submitNewUserData(e, getFormData())}>
         <label htmlFor="email">Email: </label>
         <input

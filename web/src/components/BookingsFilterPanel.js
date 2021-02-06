@@ -43,8 +43,6 @@ const BookingsFilterPanel = (props) => {
 
   return (
     <div className="BookingsFilterPanel">
-      <h1>filter panel</h1>
-
       <form onSubmit={(e) => submitFilterSettings(e, getFilterSettings())}>
         <label htmlFor="username">Username: </label>
         <input

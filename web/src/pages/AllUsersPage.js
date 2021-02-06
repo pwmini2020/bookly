@@ -5,7 +5,6 @@ import NavButtons from "../components/NavButtons";
 const AllUsersPage = (props) => {
   return (
     <div>
-      <h1>all users page</h1>
       <div className="UserList">
         <div
           className="UserListItem"
