@@ -30,8 +30,8 @@ const BookingsList = (props) => {
       <NavButtons
         pageNumber={1}
         pageTotal={10}
-        previousPage={() => fetchNextPage()}
-        nextPage={() => fetchPreviousPage()}
+        previousPage={() => fetchPreviousPage()}
+        nextPage={() => fetchNextPage()}
       />
     </div>
   );
