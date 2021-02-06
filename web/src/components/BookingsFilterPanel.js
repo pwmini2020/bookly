@@ -14,6 +14,14 @@ const BookingsFilterPanel = (props) => {
   const [carBookingsSelected, setCarBookingsSelected] = useState(false);
   const [flatBookingsSelected, setFlatBookingsSelected] = useState(false);
   const [parkingBookingsSelected, setParkingBookingsSelected] = useState(false);
+  const [showActiveSelected, setShowActiveSelected] = useState(false);
+  const [showInactiveSelected, setShowInactiveSelected] = useState(false);
+  const [sortBy, setSortBy] = useState("");
+  const [orderOfSorting, setOrderOfSorting] = useState("");
+
+  const isOrderOfSortingDisabled = () => {
+    return sortBy === "";
+  };
 
   const getFilterSettings = () => {
     return {
@@ -21,6 +29,10 @@ const BookingsFilterPanel = (props) => {
       carBookingsSelected: carBookingsSelected,
       flatBookingsSelected: flatBookingsSelected,
       parkingBookingsSelected: parkingBookingsSelected,
+      showActiveSelected: showActiveSelected,
+      showInactiveSelected: showInactiveSelected,
+      sortBy: sortBy,
+      orderOfSorting: orderOfSorting,
     };
   };
 
@@ -31,8 +43,6 @@ const BookingsFilterPanel = (props) => {
 
   return (
     <div className="BookingsFilterPanel">
-      <h1>filter panel</h1>
-
       <form onSubmit={(e) => submitFilterSettings(e, getFilterSettings())}>
         <label htmlFor="username">Username: </label>
         <input
@@ -66,6 +76,44 @@ const BookingsFilterPanel = (props) => {
           value={parkingBookingsSelected}
           onChange={(e) => setParkingBookingsSelected(e.target.checked)}
         />
+        <br />
+
+        <label htmlFor="sortBy">Sort by: </label>
+        <select name="sortBy" onChange={(e) => setSortBy(e.target.value)}>
+          <option value=""></option>
+          <option value="type">type</option>
+          <option value="username">username</option>
+        </select>
+        <br />
+
+        <label htmlFor="orderOfSorting">Order of sorting: </label>
+        <select
+          name="orderOfSorting"
+          onChange={(e) => setOrderOfSorting(e.target.value)}
+          disabled={isOrderOfSortingDisabled()}
+        >
+          <option value=""></option>
+          <option value="ascending">ascending</option>
+          <option value="descending">descending</option>
+        </select>
+        <br />
+
+        <label htmlFor="showActive">Active:</label>
+        <input
+          type="checkbox"
+          name="showActive"
+          value={showActiveSelected}
+          onChange={(e) => setShowActiveSelected(e.target.checked)}
+        />
+
+        <label htmlFor="showInactive">Inactive:</label>
+        <input
+          type="checkbox"
+          name="showInactive"
+          value={showInactiveSelected}
+          onChange={(e) => setShowInactiveSelected(e.target.checked)}
+        />
+        <br />
 
         <input type="submit" value="Filter" />
       </form>

@@ -3,9 +3,16 @@ import UserListItem from "../components/UserListItem";
 import NavButtons from "../components/NavButtons";
 
 const AllUsersPage = (props) => {
+  const fetchNextPage = () => {
+    console.log("Next button pressed");
+  };
+
+  const fetchPreviousPage = () => {
+    console.log("Previous button pressed.");
+  };
+
   return (
     <div>
-      <h1>all users page</h1>
       <div className="UserList">
         <div
           className="UserListItem"
@@ -28,9 +35,8 @@ const AllUsersPage = (props) => {
         <NavButtons
           pageNumber={1}
           pageTotal={10}
-          nextPage={() => {
-            console.log("Next button pressed");
-          }}
+          previousPage={() => fetchPreviousPage()}
+          nextPage={() => fetchNextPage()}
         />
       </div>
     </div>
