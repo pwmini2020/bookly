@@ -1,0 +1,37 @@
+.bookingsListRow {
+  border-width: 1px;
+  border-style: solid;
+  display: flex;
+}
+
+.usernameColumn {
+  flex: 15%;
+}
+
+.bookingTypeColumn,
+.bookingIdColumn {
+  flex: 10%;
+}
+
+.bookingDetailsColumn {
+  flex: 65%;
+  display: flex;
+}
+
+/* columns inside bookingDetailsColumn */
+.dateColumn,
+.detailsColumn {
+  flex: 42%;
+}
+
+.buttonsColumn {
+  flex: 16%;
+}
+
+/* rows corresponding to columns above */
+/*
+.dateRow,
+.detailsRow,
+.buttonsRow {
+}
+*/

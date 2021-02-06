@@ -27,13 +27,13 @@
             "description":	"It's a parking spot",
             "id": 1,
             "location":	"Nowogradzka 36",
-            "Space no":	2
+            "SpaceNo":	2
         }
     },
     {
         "id": 3,
         "ownerId": 2,
-        "bookingType": "Parking",
+        "bookingType": "Flat",
         "startDate": "2021-01-04T18:28:04.804Z",
         "endDate": "2021-03-05T18:28:04.804Z",
         "Username": "call_me_flatly",
