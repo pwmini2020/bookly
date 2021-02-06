@@ -41,7 +41,7 @@ const SearchParkingTab = () => {
 				<Button onPress={()=>setLocationShow(true)} title={location=="" ? "Location" : location}/>
 			</View>
 			<View style={styles.button}>
-				<Button onPress={()=>setParkingTypeShow(true)} title={parkingType=="" ? "Car Type" : parkingType}/>
+				<Button onPress={()=>setParkingTypeShow(true)} title={parkingType=="" ? "Parking Type" : parkingType}/>
 			</View>
 			<View style={[styles.searchButton, styles.button]}>
 				<Button title="Search" color="red"/>
@@ -73,7 +73,7 @@ const SearchParkingTab = () => {
 			isDialogVisible={parkingTypeShow}
 			title={"Parking Type"}
 			message={"Choose Parking Type for your booking"}
-			hintInput={"e.g. Underground idk"}
+			hintInput={"e.g. Underground"}
 			submitInput={(inputText) => {setParkingType(inputText.trim()); setParkingTypeShow(false)}}
 			closeDialog={() => setParkingTypeShow(false)}
 		/>

@@ -21,7 +21,7 @@ const HomeScreen = ({navigation, route}) => {
 //            justifyContent: "center",
 //            alignItems: "center",
         }}>
-            {!token ? 
+            {token ? 
 				<TabSwitcher
 					activeCars = <SearchCarsTab/>
 					activeFlats = <SearchFlatsTab/>
