@@ -1,10 +1,4 @@
 .NavButtons {
-  text-align: right;
-  margin-top: 10px;
-}
-
-.NavButton {
-  width: 30px;
-  height: 30px;
-  margin-left: 10px;
+  float: right;
+  text-align: center;
 }

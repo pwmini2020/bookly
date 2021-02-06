@@ -4,10 +4,10 @@ const NavButtons = (props) => {
   return (
     <div className="NavButtons">
       <div>
-        <button className="NavButton" onClick={props.previousPage}>
+        <button className="btn btn-primary m-1" onClick={props.previousPage}>
           {"<"}
         </button>
-        <button className="NavButton" onClick={props.nextPage}>
+        <button className="btn btn-primary m-1" onClick={props.nextPage}>
           {">"}
         </button>
       </div>

@@ -13,6 +13,8 @@ import usersReducer from "./reducers/usersReducer";
 import loginPageReducer from "./reducers/loginPageReducer";
 import newUserReducer from "./reducers/newUserReducer";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 const rootReducer = combineReducers({
   bookings: bookingsReducer,
   userAuth: userAuthReducer,
