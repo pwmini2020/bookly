@@ -29,22 +29,27 @@ const LoginPage = (props) => {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <p>test username:password --- testUser:test1234</p>
+    <div className="text-center" style={{ width: "40%", margin: "auto" }}>
+      <h1>Sign in</h1>
 
-      <form onSubmit={(e) => submitCredentials(e, username, password)}>
-        <label htmlFor="username">Username: </label>
+      <form
+        className="form-signin"
+        onSubmit={(e) => submitCredentials(e, username, password)}
+      >
         <input
+          className="form-control"
+          placeholder="Username"
+          required=""
           type="text"
           name="username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <br />
 
-        <label htmlFor="username">Password: </label>
         <input
+          className="form-control"
+          placeholder="Password"
+          required=""
           type="password"
           name="password"
           value={password}
@@ -52,10 +57,16 @@ const LoginPage = (props) => {
         />
         <br />
 
-        <input type="submit" value="Login" />
+        <button type="submit" className="btn btn-lg btn-primary btn-block">
+          Sign in
+        </button>
       </form>
-      {props.loginInProgress && <p>logging in...</p>}
-      {props.loginFailed && <p>login failed</p>}
+      <br />
+
+      {props.loginInProgress && <p>Signing in...</p>}
+      {props.loginFailed && !props.loginInProgress && (
+        <p className="text-danger">Incorrect credentials.</p>
+      )}
     </div>
   );
 };
