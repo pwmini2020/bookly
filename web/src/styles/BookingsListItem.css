@@ -4,26 +4,34 @@
   display: flex;
 }
 
-.usernameColumn,
-.bookingTypeColumn,
-.bookingIdColumn {
+.usernameColumn {
   flex: 15%;
 }
 
+.bookingTypeColumn,
+.bookingIdColumn {
+  flex: 10%;
+}
+
 .bookingDetailsColumn {
-  flex: 55%;
+  flex: 65%;
   display: flex;
 }
 
 /* columns inside bookingDetailsColumn */
 .dateColumn,
-.detailsColumn,
+.detailsColumn {
+  flex: 42%;
+}
+
 .buttonsColumn {
-  flex: 33%;
+  flex: 16%;
 }
 
 /* rows corresponding to columns above */
+/*
 .dateRow,
 .detailsRow,
 .buttonsRow {
 }
+*/
