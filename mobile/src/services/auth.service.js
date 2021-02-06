@@ -1,32 +1,43 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {SECURITY_TOKEN, TOKEN_STRING} from '@env';
+import {TOKEN_STRING, API_URL, API_V} from '@env';
 import tokenState from "../state";
 import {getItemAsync, removeItemAsync, setItemAsync} from "../helpers/asyncStorage.helper";
-import {errorToast} from "../helpers/toast.helper";
+import {errorToast, successToast} from "../helpers/toast.helper";
 
 export const authenticateUserAsync = async (credentials) => {
-    //TODO: fetch backend (once it is actually done)
-    let token = null;
-    if(process.env.APP_ENV === 'development') {
-        token = SECURITY_TOKEN;
-    }
-    if(token) {
-        await setItemAsync(TOKEN_STRING, token);
-        tokenState.set(token);
-    }
-    else {
-        errorToast('Please, provide correct login and password.');
-    }
+   const response = await fetch(`${API_URL}/v${API_V}/login`, {
+       method: 'POST',
+       headers: {
+           'Content-Type': 'application/json'
+       },
+       body: JSON.stringify(credentials)
+   });
+
+   if(response.status === 401) {
+       errorToast('Please, provide correct login and password.');
+       return;
+   }
+
+   const {token} = await response.json();
+   await setItemAsync(TOKEN_STRING, token);
+   tokenState.set(token);
+   if(token) {
+       successToast('You have successfully logged in!');
+   }
+   else {
+       errorToast('Some login problem.');
+   }
 }
 
 export const logoutUserAsync = async () => {
     await removeItemAsync(TOKEN_STRING);
     tokenState.reset();
+    successToast('You successfully logged out.')
 }
 
 export const tryRestoreUserAsync = async () => {
     const token = await getItemAsync(TOKEN_STRING);
     if (token) {
         tokenState.set(token);
+        successToast('Successfully restored last session...');
     }
 }

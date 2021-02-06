@@ -14,10 +14,10 @@ export const setItemAsync = async (key, value) => {
 export const getItemAsync = async (key) => {
     try {
         const jsonValue = await AsyncStorage.getItem(`@${key}`);
-        return jsonValue ? JSON.parse(jsonValue) : null;
+        return jsonValue;
     } catch (e) {
         if(process.env.APP_ENV === 'development') {
-            errorToast(e.message());
+            errorToast(e.message);
         }
     }
 }

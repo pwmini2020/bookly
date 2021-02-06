@@ -6,13 +6,16 @@ import SearchCarsTab from "../../components/SearchCarsTab.jsx"
 import SearchFlatsTab from "../../components/SearchFlatsTab.jsx"
 import SearchParkingTab from "../../components/SearchParkingTab.jsx"
 import tokenState from "../../state";
+import {tryRestoreUserAsync} from "../../services/auth.service";
 
 const HomeScreen = ({navigation, route}) => {
     const token = tokenState.useValue();
 
     useEffect(() => {
         //TODO: uncomment once backend is connected.
-        //tryRestoreUserAsync();
+        if(!token) {
+            tryRestoreUserAsync();
+        }
     }, [token]);
 
     return (
@@ -21,11 +24,11 @@ const HomeScreen = ({navigation, route}) => {
 //            justifyContent: "center",
 //            alignItems: "center",
         }}>
-            {token ? 
+            {token ?
 				<TabSwitcher
-					activeCars = <SearchCarsTab/>
-					activeFlats = <SearchFlatsTab/>
-					activeParking = <SearchParkingTab/>
+                    activeCars = {<SearchCarsTab/>}
+                    activeFlats = {<SearchFlatsTab/>}
+                    activeParking = {<SearchParkingTab/>}
 				/> 
 				: 
 				<Login/>}
