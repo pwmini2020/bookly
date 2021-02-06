@@ -39,7 +39,6 @@ const LoginPage = (props) => {
         <input
           className="form-control"
           placeholder="Username"
-          required=""
           type="text"
           name="username"
           value={username}
@@ -49,7 +48,6 @@ const LoginPage = (props) => {
         <input
           className="form-control"
           placeholder="Password"
-          required=""
           type="password"
           name="password"
           value={password}
