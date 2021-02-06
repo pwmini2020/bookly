@@ -29,7 +29,8 @@ const LoginPage = (props) => {
   };
 
   return (
-    <div className="text-center" style={{ width: "40%", margin: "auto" }}>
+    <div className="text-center" style={{ width: "25%", margin: "auto" }}>
+      <br />
       <h1>Sign in</h1>
 
       <form
