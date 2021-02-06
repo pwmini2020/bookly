@@ -5,15 +5,15 @@ const DetailsDisplay = (props) => {
     if (props.data.bookingType === "Car") {
       return (
         <div>
-          <text>Price: {props.data.Details.dailyPrice} PLN per day</text>
+          <p>Price: {props.data.Details.dailyPrice} PLN per day</p>
           <br />
-          <text>Model: {props.data.Details.model}</text>
+          <p>Model: {props.data.Details.model}</p>
           <br />
-          <text>Location: {props.data.Details.location}</text>
+          <p>Location: {props.data.Details.location}</p>
           <br />
-          <text>Plate number: {props.data.Details.plateNumber}</text>
+          <p>Plate number: {props.data.Details.plateNumber}</p>
           <br />
-          <text>Description: {props.data.Details.description}</text>
+          <p>Description: {props.data.Details.description}</p>
           <br />
         </div>
       );
@@ -21,13 +21,13 @@ const DetailsDisplay = (props) => {
     if (props.data.bookingType === "Parking") {
       return (
         <div>
-          <text>Price: {props.data.Details.dailyPrice} PLN per day</text>
+          <p>Price: {props.data.Details.dailyPrice} PLN per day</p>
           <br />
-          <text>Location: {props.data.Details.location}</text>
+          <p>Location: {props.data.Details.location}</p>
           <br />
-          <text>Space number: {props.data.Details.SpaceNo}</text>
+          <p>Space number: {props.data.Details.SpaceNo}</p>
           <br />
-          <text>Description: {props.data.Details.description}</text>
+          <p>Description: {props.data.Details.description}</p>
           <br />
         </div>
       );
@@ -35,13 +35,13 @@ const DetailsDisplay = (props) => {
     if (props.data.bookingType === "Flat") {
       return (
         <div>
-          <text>Price: {props.data.Details.dailyPrice} PLN per day</text>
+          <p>Price: {props.data.Details.dailyPrice} PLN per day</p>
           <br />
-          <text>Location: {props.data.Details.location}</text>
+          <p>Location: {props.data.Details.location}</p>
           <br />
-          <text>Number of rooms: {props.data.Details.Number_of_rooms}</text>
+          <p>Number of rooms: {props.data.Details.Number_of_rooms}</p>
           <br />
-          <text>Description: {props.data.Details.description}</text>
+          <p>Description: {props.data.Details.description}</p>
           <br />
         </div>
       );
@@ -51,13 +51,13 @@ const DetailsDisplay = (props) => {
   return (
     <div className="DetailsDisplay">
       <div style={{ background: "lightgray", textAlign: "center" }}>
-        <text>Details for booking {props.data.id}</text>
+        <p>Details for booking {props.data.id}</p>
       </div>
-      <text>Booking type: {props.data.bookingType}</text>
+      <p>Booking type: {props.data.bookingType}</p>
       <br />
-      <text>Date Begun: {props.data.startDate}</text>
+      <p>Date Begun: {props.data.startDate}</p>
       <br />
-      <text>Date Ended: {props.data.endDate}</text>
+      <p>Date Ended: {props.data.endDate}</p>
       <br />
       {DisplayDetails()}
     </div>
