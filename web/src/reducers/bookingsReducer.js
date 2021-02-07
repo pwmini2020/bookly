@@ -1,6 +1,9 @@
 const initialState = {
   fetchInProgress: false,
+  page: 0,
+  totalPages: 0,
   bookings: [],
+  filters: {},
 };
 
 const bookingsReducer = (state = initialState, action) => {
@@ -31,6 +34,8 @@ const bookingsReducer = (state = initialState, action) => {
         ...state,
         fetchInProgress: false,
         bookings: [],
+        totalPages: 0,
+        page: 0,
       };
     }
 
@@ -38,6 +43,34 @@ const bookingsReducer = (state = initialState, action) => {
       return {
         ...state,
         bookings: action.payload.bookings,
+      };
+    }
+
+    case "NEXT_PAGE_BOOKINGS": {
+      return {
+        ...state,
+        page: state.page + 1,
+      };
+    }
+
+    case "PREVIOUS_PAGE_BOOKINGS": {
+      return {
+        ...state,
+        page: state.page - 1,
+      };
+    }
+
+    case "SAVE_TOTAL_PAGES_BOOKINGS": {
+      return {
+        ...state,
+        totalPages: action.payload.totalPages,
+      };
+    }
+
+    case "SAVE_BOOKINGS_FILTERS": {
+      return {
+        ...state,
+        filters: action.payload.filters,
       };
     }
 
