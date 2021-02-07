@@ -1,7 +1,7 @@
 const API_URL = process.env.REACT_APP_API_URL;
 
 export const getAll = (token) => {
-  fetch(`${API_URL}/v1/bookings/`, {
+  return fetch(`${API_URL}/v1/bookings/`, {
     method: "GET",
     headers: {
       "Security-Token": token,
@@ -9,6 +9,12 @@ export const getAll = (token) => {
   }).then((res) => res.json());
 };
 
-export const getFilteredBookings = (filterSettings) => {
-  return [];
+// NOT FINISHED
+export const getFilteredBookings = (token, filterSettings) => {
+  return fetch(`${API_URL}/v1/bookings?page=2`, {
+    method: "GET",
+    headers: {
+      "Security-Token": token,
+    },
+  }).then((res) => res.json());
 };
