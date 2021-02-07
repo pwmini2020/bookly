@@ -59,7 +59,6 @@ export const saveBookingsFilters = (filters) => {
   };
 };
 
-// NOT FINISHED
 export const filterBookings = (token, paginationSettings, filterSettings) => {
   return async (dispatch) => {
     try {
