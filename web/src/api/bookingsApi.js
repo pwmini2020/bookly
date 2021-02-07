@@ -88,10 +88,13 @@ export const getFilteredBookings = (
   paginationSettings,
   filterSettings
 ) => {
-  const p = getRequestParams(paginationSettings, filterSettings);
-  const paramsString = `page=${p.page}&sort=${p.sortType}&sortOrder=${p.sortOrder}&type=${p.bookingType}&owner=${p.owner}&status=${p.bookingsStatus}`;
-
-  console.log(paramsString); // DEBUG
+  let paramsString;
+  if (Object.keys(filterSettings).length === 0) {
+    paramsString = `page=${paginationSettings.page}`;
+  } else {
+    const p = getRequestParams(paginationSettings, filterSettings);
+    paramsString = `page=${p.page}&sort=${p.sortType}&sortOrder=${p.sortOrder}&type=${p.bookingType}&owner=${p.owner}&status=${p.bookingsStatus}`;
+  }
 
   return fetch(`${API_URL}/v1/bookings?${paramsString}`, {
     method: "GET",
