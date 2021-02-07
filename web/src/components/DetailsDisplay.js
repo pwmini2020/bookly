@@ -50,18 +50,6 @@ const DetailsDisplay = (props) => {
     }
   };
 
-  /*return (
-    <div className="jumbotron p-3">
-      <div style={{ background: "lightgray", textAlign: "center" }}>
-        Details for booking {props.data.id}<br/>
-      </div>
-      Booking type: {props.data.bookingType}<br/>
-      Date Begun: {props.data.startDate}<br/>
-      Date Ended: {props.data.endDate}<br/>
-      {DisplayDetails()}
-    </div>
-  );*/
-
   return (
     <Card variant="info" className="DetailsDisplay">
       <Card.Body>
