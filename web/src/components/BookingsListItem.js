@@ -68,7 +68,7 @@ const BookingsListItem = (props) => {
                 More...
               </Button>
             }
-            position="left center"
+            position="left top"
             closeOnDocumentClick
             closeOnEscape
             repositionOnResize
