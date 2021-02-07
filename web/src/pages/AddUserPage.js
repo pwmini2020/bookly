@@ -50,7 +50,7 @@ const AddUserPage = (props) => {
   };
 
   return (
-    <div style={{ margin: "10px" }}>
+    <div style={{ width: "70%", margin: "auto" }}>
       <form onSubmit={(e) => submitNewUserData(e, getFormData())}>
         <div className="form-gorup row my-1">
           <label htmlFor="email" className="col-sm-2 col-form-label">
