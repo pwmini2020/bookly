@@ -8,47 +8,44 @@ const DetailsDisplay = (props) => {
     if (details == null) {
       return "invalid details";
     }
-    if (props.data.itemType === "Car") {
-      return (
-        <div>
-          Model: {details.carModel}
-          <br />
-          Car Id: {details.carId}
-          <br />
-          Plate number: {details.carPlateNumber}
-          <br />
-          Description: {details.carDescription}
-          <br />
-        </div>
-      );
-    }
-    if (props.data.bookingType === "Parking") {
-      return (
-        <div>
-          Price: {props.data.Details.dailyPrice} PLN per day
-          <br />
-          Location: {props.data.Details.location}
-          <br />
-          Space number: {props.data.Details.SpaceNo}
-          <br />
-          Description: {props.data.Details.description}
-          <br />
-        </div>
-      );
-    }
-    if (props.data.bookingType === "Flat") {
-      return (
-        <div>
-          Price: {props.data.Details.dailyPrice} PLN per day
-          <br />
-          Location: {props.data.Details.location}
-          <br />
-          Number of rooms: {props.data.Details.Number_of_rooms}
-          <br />
-          Description: {props.data.Details.description}
-          <br />
-        </div>
-      );
+    switch (props.data.itemType) {
+      case "Car":
+        return (
+          <div>
+            Model: {details.carModel}
+            <br />
+            Car Id: {details.carId}
+            <br />
+            Plate number: {details.carPlateNumber}
+            <br />
+            Description: {details.carDescription}
+            <br />
+          </div>
+        );
+      case "Parking":
+        return (
+          <div>
+            Parking name: {details.parkingName}
+            <br />
+            Parking id: {details.parkingId}
+            <br />
+          </div>
+        );
+      /*case "Flat":
+        return (
+          <div>
+            Price: {props.data.Details.dailyPrice} PLN per day
+            <br />
+            Location: {props.data.Details.location}
+            <br />
+            Number of rooms: {props.data.Details.Number_of_rooms}
+            <br />
+            Description: {props.data.Details.description}
+            <br />
+          </div>
+        );*/
+      default:
+        return <div>unexpected booking type</div>;
     }
   };
 

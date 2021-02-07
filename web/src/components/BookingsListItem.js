@@ -6,6 +6,7 @@ import Popup from "reactjs-popup";
 const BookingsListItem = (props) => {
   const displayTypeSpecificRows = () => {
     const details = props.data.item.details;
+
     if (details == null) {
       return "Invalid details";
     }
@@ -20,7 +21,7 @@ const BookingsListItem = (props) => {
           </div>
         );
 
-      case "Flat":
+      /*case "Flat":
         return (
           <div>
             <div className="detailsRow">
@@ -30,17 +31,15 @@ const BookingsListItem = (props) => {
               Location: {props.data.Details.location}
             </div>
           </div>
-        );
+        );*/
 
       case "Parking":
         return (
           <div>
             <div className="detailsRow">
-              Parking spot number: {props.data.Details.parkingName}
+              Parking name: {details.parkingName}
             </div>
-            <div className="detailsRow">
-              Location: {props.data.Details.parkingId}
-            </div>
+            <div className="detailsRow">Parking id: {details.parkingId}</div>
           </div>
         );
 
