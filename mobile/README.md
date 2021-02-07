@@ -1,7 +1,7 @@
 # Bookly mobile
 ![Expo Bookly Staging](https://github.com/pwmini2020/bookly/workflows/Expo%20Bookly%20Staging/badge.svg)
 
-- Project link: https://expo.io/@bookly/projects/bookly-mobile
+- Project link: https://expo.io/@bookly/projects/bookly-mobile-staging
 
 ## 🚀 How to use
 * Install dependencies:
