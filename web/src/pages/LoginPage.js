@@ -28,6 +28,14 @@ const LoginPage = (props) => {
     props.loginUser(username, password);
   };
 
+  const displayProgress = () => {
+    if (props.loginInProgress) {
+      return <p>Signing in...</p>;
+    } else if (props.loginFailed) {
+      return <p className="text-danger">Incorrect credentials.</p>;
+    }
+  };
+
   return (
     <div className="text-center" style={{ width: "25%", margin: "auto" }}>
       <br />
@@ -62,10 +70,7 @@ const LoginPage = (props) => {
       </form>
       <br />
 
-      {props.loginInProgress && <p>Signing in...</p>}
-      {props.loginFailed && !props.loginInProgress && (
-        <p className="text-danger">Incorrect credentials.</p>
-      )}
+      {displayProgress()}
     </div>
   );
 };
