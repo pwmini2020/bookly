@@ -78,8 +78,14 @@ export const filterBookings = (token, paginationSettings, filterSettings) => {
       // parse the details from string to JSON
       const pageSize = responseBody.numberOfElements;
       for (let i = 0; i < pageSize; i++) {
-        const parsedDetails = JSON.parse(responseBody.content[i].item.details);
-        responseBody.content[i].item.details = parsedDetails;
+        try {
+          const parsedDetails = JSON.parse(
+            responseBody.content[i].item.details
+          );
+          responseBody.content[i].item.details = parsedDetails;
+        } catch (error) {
+          console.error("error while parsing item details: ", error);
+        }
       }
 
       dispatch(saveBookings(responseBody.content));
