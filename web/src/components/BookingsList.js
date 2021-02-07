@@ -21,9 +21,9 @@ const BookingsList = (props) => {
         <thead>
           <tr>
             <th width="15%">Username</th>
-            <th width="10%">Type</th>
-            <th width="10%">ID</th>
-            <th width="65%" colSpan="3">
+            <th width="15%">Type</th>
+            <th width="15%">ID</th>
+            <th width="55%" colSpan="2">
               Details
             </th>
           </tr>
