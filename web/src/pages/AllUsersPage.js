@@ -52,7 +52,12 @@ const AllUsersPage = (props) => {
   return (
     <div>
       {props.fetchInProgress ? (
-        <p>loading...</p>
+        <div className="text-center">
+          <br />
+          <div className="spinner-border text-primary" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+        </div>
       ) : (
         <div style={{ margin: "10px" }}>
           <div className="UserList">

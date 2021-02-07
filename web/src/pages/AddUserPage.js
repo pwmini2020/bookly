@@ -41,11 +41,26 @@ const AddUserPage = (props) => {
 
   const displayProgress = () => {
     if (props.requestInProgress) {
-      return <p>request in progress...</p>;
+      return (
+        <div>
+          <br />
+          <div className="spinner-border text-primary" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+        </div>
+      );
     } else if (props.requestFailed) {
-      return <p>request failed</p>;
+      return (
+        <div class="alert alert-danger" role="alert">
+          Request failed.
+        </div>
+      );
     } else if (!props.requestFailed && props.requestWasSent) {
-      return <p>success</p>;
+      return (
+        <div className="alert alert-success" role="alert">
+          Success.
+        </div>
+      );
     }
   };
 
@@ -170,6 +185,7 @@ const AddUserPage = (props) => {
           value="Create a new user"
         />
       </form>
+
       {displayProgress()}
     </div>
   );
