@@ -50,7 +50,7 @@ const AddUserPage = (props) => {
   };
 
   return (
-    <div style={{ margin: "10px" }}>
+    <div style={{ width: "70%", margin: "auto" }}>
       <form onSubmit={(e) => submitNewUserData(e, getFormData())}>
         <div className="form-gorup row my-1">
           <label htmlFor="email" className="col-sm-2 col-form-label">
@@ -167,7 +167,7 @@ const AddUserPage = (props) => {
         <input
           className="btn btn-primary my-1"
           type="submit"
-          value="Generate a password and create a new user"
+          value="Create a new user"
         />
       </form>
       {displayProgress()}
