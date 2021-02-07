@@ -98,7 +98,7 @@ const BookingsFilterPanel = (props) => {
         </div>
 
         <div className="form-row my-1">
-          <div class="form-check form-check-inline mx-1">
+          <div className="form-check form-check-inline mx-1">
             <label htmlFor="carBookings" className="form-check-label">
               Car:
             </label>
@@ -112,7 +112,7 @@ const BookingsFilterPanel = (props) => {
             />
           </div>
 
-          <div class="form-check form-check-inline mx-1">
+          <div className="form-check form-check-inline mx-1">
             <label htmlFor="flatBookings" className="form-check-label">
               Flat:
             </label>
@@ -126,7 +126,7 @@ const BookingsFilterPanel = (props) => {
             />
           </div>
 
-          <div class="form-check form-check-inline mx-1">
+          <div className="form-check form-check-inline mx-1">
             <label htmlFor="parkingBookings" className="form-check-label">
               Parking:
             </label>
@@ -140,7 +140,7 @@ const BookingsFilterPanel = (props) => {
             />
           </div>
 
-          <div class="form-check form-check-inline ml-5 mr-1">
+          <div className="form-check form-check-inline ml-5 mr-1">
             <label htmlFor="showActive" className="form-check-label">
               Active:
             </label>
@@ -154,7 +154,7 @@ const BookingsFilterPanel = (props) => {
             />
           </div>
 
-          <div class="form-check form-check-inline mx-1">
+          <div className="form-check form-check-inline mx-1">
             <label htmlFor="showInactive" className="form-check-label">
               Inactive:
             </label>
@@ -170,7 +170,7 @@ const BookingsFilterPanel = (props) => {
 
           <input
             type="submit"
-            class="btn btn-primary btn-sm mx-5"
+            className="btn btn-primary btn-sm mx-5"
             value="Filter"
           />
         </div>
