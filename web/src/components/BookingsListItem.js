@@ -5,14 +5,18 @@ import Popup from "reactjs-popup";
 
 const BookingsListItem = (props) => {
   const displayTypeSpecificRows = () => {
-    const ParsedDetails = JSON.parse(props.data.item.details);
+    //const ParsedDetails = JSON.parse(props.data.item.details);
+    const details = props.data.Details;
+    if (details == null) {
+      return "Inavlid details";
+    }
     switch (props.data.itemType) {
       case "Car":
         return (
           <div>
-            <div className="detailsRow">Model: {ParsedDetails.id}</div>
+            <div className="detailsRow">Model: {details.carModel}</div>
             <div className="detailsRow">
-              Plate numbers: {ParsedDetails.tenantId}
+              Plate numbers: {details.carPlateNumber}
             </div>
           </div>
         );
@@ -33,10 +37,10 @@ const BookingsListItem = (props) => {
         return (
           <div>
             <div className="detailsRow">
-              Parking spot number: {ParsedDetails.parkingName}
+              Parking spot number: {props.data.Details.parkingName}
             </div>
             <div className="detailsRow">
-              Location: {ParsedDetails.parkingId}
+              Location: {props.data.Details.parkingId}
             </div>
           </div>
         );
@@ -61,7 +65,11 @@ const BookingsListItem = (props) => {
         <div className="detailsRow">
           <Popup
             trigger={
-              <Button variant="info" size="sm">
+              <Button
+                variant="info"
+                size="sm"
+                disabled={props.data.item.details == null}
+              >
                 More...
               </Button>
             }
