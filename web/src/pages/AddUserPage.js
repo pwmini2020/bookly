@@ -52,61 +52,98 @@ const AddUserPage = (props) => {
   return (
     <div style={{ margin: "10px" }}>
       <form onSubmit={(e) => submitNewUserData(e, getFormData())}>
-        <label htmlFor="email">Email: </label>
-        <input
-          type="text"
-          name="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <br />
+        <div class="form-gorup row my-1">
+          <label for="email" class="col-sm-1 col-form-label">
+            Email:{" "}
+          </label>
+          <div class="col-sm-11">
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+        </div>
 
-        <label htmlFor="username">Username: </label>
-        <input
-          type="text"
-          name="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <br />
+        <div class="form-gorup row my-1">
+          <label for="username" class="col-sm-1 col-form-label">
+            Username:{" "}
+          </label>
+          <div class="col-sm-11">
+            <input
+              type="text"
+              class="form-control"
+              name="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
+        </div>
 
-        <label htmlFor="firstname">First name: </label>
-        <input
-          type="text"
-          name="firstname"
-          value={firstname}
-          onChange={(e) => setFirstname(e.target.value)}
-        />
-        <br />
+        <div class="form-gorup row my-1">
+          <label for="name" class="col-sm-1 col-form-label">
+            First name:{" "}
+          </label>
+          <div class="col-sm-11">
+            <input
+              type="text"
+              class="form-control"
+              name="name"
+              value={firstname}
+              onChange={(e) => setFirstname(e.target.value)}
+            />
+          </div>
+        </div>
 
-        <label htmlFor="surname">Surname: </label>
-        <input
-          type="text"
-          name="surname"
-          value={surname}
-          onChange={(e) => setSurname(e.target.value)}
-        />
-        <br />
+        <div class="form-gorup row my-1">
+          <label for="surname" class="col-sm-1 col-form-label">
+            Surname:{" "}
+          </label>
+          <div class="col-sm-11">
+            <input
+              type="text"
+              class="form-control"
+              name="surname"
+              value={surname}
+              onChange={(e) => setSurname(e.target.value)}
+            />
+          </div>
+        </div>
 
-        <label htmlFor="country">Country: </label>
-        <input
-          type="text"
-          name="country"
-          value={country}
-          onChange={(e) => setCountry(e.target.value)}
-        />
-        <br />
+        <div class="form-gorup row my-1">
+          <label for="country" class="col-sm-1 col-form-label">
+            Country:{" "}
+          </label>
+          <div class="col-sm-11">
+            <input
+              type="text"
+              class="form-control"
+              name="country"
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+            />
+          </div>
+        </div>
 
-        <label htmlFor="address">Address: </label>
-        <input
-          type="text"
-          name="address"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-        />
-        <br />
+        <div class="form-gorup row my-1">
+          <label for="address" class="col-sm-1 col-form-label">
+            Address:{" "}
+          </label>
+          <div class="col-sm-11">
+            <input
+              type="text"
+              class="form-control"
+              name="address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
+          </div>
+        </div>
 
         <input
+          class="btn btn-primary my-1"
           type="submit"
           value="Generate a password and create a new user"
         />
