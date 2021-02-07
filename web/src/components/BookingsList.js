@@ -33,13 +33,14 @@ const mapStateToProps = (state) => ({
 
 const BookingsList = (props) => {
   useEffect(() => {
-    props.filterBookings(props.token, {}, {});
+    props.filterBookings(props.token, { page: props.page }, {});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchNextPage = () => {
     if (props.page + 1 < props.totalPages) {
       props.nextPage();
-      const paginationSettings = { page: props.page };
+      const paginationSettings = { page: props.page + 1 };
       props.filterBookings(
         props.token,
         paginationSettings,
@@ -51,7 +52,7 @@ const BookingsList = (props) => {
   const fetchPreviousPage = () => {
     if (props.page - 1 >= 0) {
       props.previousPage();
-      const paginationSettings = { page: props.page };
+      const paginationSettings = { page: props.page - 1 };
       props.filterBookings(
         props.token,
         paginationSettings,
