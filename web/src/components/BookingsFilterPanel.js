@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import {
   filterBookings,
   saveBookingsFilters,
+  returnToFirstPageBookings,
 } from "../actionCreators/bookingsActionCreator";
 
 import "../styles/BookingsFilterPanel.css";
@@ -12,6 +13,7 @@ const mapDispatchToProps = (dispatch) => ({
   filterBookings: (token, paginationSettings, filterSettings) =>
     dispatch(filterBookings(token, paginationSettings, filterSettings)),
   saveBookingsFilters: (filters) => dispatch(saveBookingsFilters(filters)),
+  returnToFirstPage: () => dispatch(returnToFirstPageBookings()),
 });
 
 const mapStateToProps = (state) => ({
@@ -49,9 +51,10 @@ const BookingsFilterPanel = (props) => {
 
   const submitFilterSettings = (e, filterSettings) => {
     e.preventDefault();
-    const paginationSettings = { page: props.page };
+    props.returnToFirstPage();
     props.saveBookingsFilters(filterSettings);
-    props.filterBookings(props.token, paginationSettings, props.filterSettings);
+    const paginationSettings = { page: 0 };
+    props.filterBookings(props.token, paginationSettings, filterSettings);
   };
 
   return (

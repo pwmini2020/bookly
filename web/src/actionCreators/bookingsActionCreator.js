@@ -41,6 +41,12 @@ export const previousPageBookings = () => {
   };
 };
 
+export const returnToFirstPageBookings = () => {
+  return {
+    type: "RETURN_TO_FIRST_PAGE_BOOKINGS",
+  };
+};
+
 const saveTotalPagesBookings = (totalPages) => {
   return {
     type: "SAVE_TOTAL_PAGES_BOOKINGS",

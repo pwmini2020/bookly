@@ -60,6 +60,13 @@ const bookingsReducer = (state = initialState, action) => {
       };
     }
 
+    case "RETURN_TO_FIRST_PAGE_BOOKINGS": {
+      return {
+        ...state,
+        page: 0,
+      };
+    }
+
     case "SAVE_TOTAL_PAGES_BOOKINGS": {
       return {
         ...state,
