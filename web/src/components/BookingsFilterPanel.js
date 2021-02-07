@@ -6,7 +6,12 @@ import { filterBookings } from "../actionCreators/bookingsActionCreator";
 import "../styles/BookingsFilterPanel.css";
 
 const mapDispatchToProps = (dispatch) => ({
-  filterBookings: (filterSettings) => dispatch(filterBookings(filterSettings)),
+  filterBookings: (token, filterSettings) =>
+    dispatch(filterBookings(token, filterSettings)),
+});
+
+const mapStateToProps = (state) => ({
+  token: state.userAuth.token,
 });
 
 const BookingsFilterPanel = (props) => {
@@ -38,7 +43,7 @@ const BookingsFilterPanel = (props) => {
 
   const submitFilterSettings = (e, filterSettings) => {
     e.preventDefault();
-    props.filterBookings(filterSettings);
+    props.filterBookings(props.token, filterSettings);
   };
 
   return (
@@ -121,4 +126,7 @@ const BookingsFilterPanel = (props) => {
   );
 };
 
-export default connect(() => ({}), mapDispatchToProps)(BookingsFilterPanel);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BookingsFilterPanel);

@@ -29,12 +29,21 @@ const saveBookings = (bookings) => {
   };
 };
 
-export const filterBookings = (filterSettings) => {
+// NOT FINISHED
+export const filterBookings = (token, filterSettings) => {
   return async (dispatch) => {
     try {
       dispatch(fetchBookingsInProgress());
-      const response = await getFilteredBookings(filterSettings);
-      dispatch(saveBookings(response));
+      const response = await getFilteredBookings(token, filterSettings);
+
+      // DEBUG
+      // (index === each item in response array)
+      // we have to parse string response.content[index].item.details to json
+      // console.log(JSON.parse(response.content[0].item.details));
+
+      const bookingsList = response.content;
+
+      dispatch(saveBookings(bookingsList));
       dispatch(fetchBookingsSucceeded());
     } catch (error) {
       console.error(error);
