@@ -5,13 +5,14 @@ import Popup from "reactjs-popup";
 
 const BookingsListItem = (props) => {
   const displayTypeSpecificRows = () => {
-    switch (props.data.bookingType) {
+    const ParsedDetails = JSON.parse(props.data.item.details);
+    switch (props.data.itemType) {
       case "Car":
         return (
           <div>
-            <div className="detailsRow">Model: {props.data.Details.model}</div>
+            <div className="detailsRow">Model: {ParsedDetails.id}</div>
             <div className="detailsRow">
-              Plate numbers: {props.data.Details.plateNumber}
+              Plate numbers: {ParsedDetails.tenantId}
             </div>
           </div>
         );
@@ -32,10 +33,10 @@ const BookingsListItem = (props) => {
         return (
           <div>
             <div className="detailsRow">
-              Parking spot number: {props.data.Details.SpaceNo}
+              Parking spot number: {ParsedDetails.parkingName}
             </div>
             <div className="detailsRow">
-              Location: {props.data.Details.location}
+              Location: {ParsedDetails.parkingId}
             </div>
           </div>
         );
@@ -47,13 +48,13 @@ const BookingsListItem = (props) => {
 
   return (
     <tr>
-      <td>{props.data.Username}</td>
-      <td>{props.data.bookingType}</td>
+      <td>{props.data.owner.login}</td>
+      <td>{props.data.itemType}</td>
       <td>{props.data.id}</td>
       <td>
-        Start date: {new Date(props.data.startDate).toDateString()}
+        Start date: {new Date(props.data.item.startDateTime).toDateString()}
         <br />
-        End date: {new Date(props.data.endDate).toDateString()}
+        End date: {new Date(props.data.item.endDateTime).toDateString()}
       </td>
       <td>
         {displayTypeSpecificRows()}

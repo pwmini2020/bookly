@@ -1,4 +1,4 @@
-import bookingsData from "../mockData/allBookings.json";
+import bookingsData from "../mockData/allBookings2.json";
 
 import BookingsListItem from "./BookingsListItem";
 import NavButtons from "./NavButtons";
