@@ -1,4 +1,4 @@
-import bookingsData from "../mockData/allBookings.json";
+import bookingsData from "../mockData/allBookings2.json";
 
 import BookingsListItem from "./BookingsListItem";
 import NavButtons from "./NavButtons";
@@ -9,6 +9,8 @@ import "../styles/BookingsListItem.css";
 const BookingsList = (props) => {
   const fetchNextPage = () => {
     console.log("Next button pressed");
+    const parsedDetails = JSON.parse(bookingsData[0].item.details);
+    console.log(parsedDetails);
   };
 
   const fetchPreviousPage = () => {

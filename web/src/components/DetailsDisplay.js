@@ -4,8 +4,9 @@ import Card from "react-bootstrap/Card";
 
 const DetailsDisplay = (props) => {
   const DisplayDetails = () => {
-    if (props.data.bookingType === "Car") {
-      return (
+    const ParsedDetails = JSON.parse(props.data.item.details);
+    if (props.data.itemType === "Car") {
+      /*return (
         <div>
           Price: {props.data.Details.dailyPrice} PLN per day
           <br />
@@ -18,7 +19,8 @@ const DetailsDisplay = (props) => {
           Description: {props.data.Details.description}
           <br />
         </div>
-      );
+      );*/
+      return <div>Car ID: {ParsedDetails.carId}</div>;
     }
     if (props.data.bookingType === "Parking") {
       return (
@@ -55,11 +57,11 @@ const DetailsDisplay = (props) => {
       <Card.Body>
         <Card.Title>Details for booking {props.data.id}</Card.Title>
         <Card.Text>
-          Booking type: {props.data.bookingType}
+          Booking type: {props.data.itemType}
           <br />
-          Date Begun: {new Date(props.data.startDate).toDateString()}
+          Date Begun: {new Date(props.data.item.startDateTime).toDateString()}
           <br />
-          Date Ended: {new Date(props.data.endDate).toDateString()}
+          Date Ended: {new Date(props.data.item.endDateTime).toDateString()}
           <br />
           {DisplayDetails()}
         </Card.Text>
