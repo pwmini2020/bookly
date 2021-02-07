@@ -14,7 +14,7 @@ const AllUsersPage = (props) => {
   };
 
   return (
-    <div>
+    <div style={{ margin: "10px" }}>
       <div className="UserList">
         <Table striped bordered variant="secondary">
           <thead>
