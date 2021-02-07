@@ -25,6 +25,7 @@ const mapStateToProps = (state) => ({
   totalPages: state.users.totalPages,
   page: state.users.page,
   fetchInProgress: state.users.fetchInProgress,
+  users: state.users.users,
 });
 
 const AllUsersPage = (props) => {
@@ -59,16 +60,18 @@ const AllUsersPage = (props) => {
             <Table striped bordered variant="secondary">
               <thead>
                 <tr>
-                  <th width="40%">Username</th>
-                  <th>Last Active</th>
+                  <th>Username</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
                 </tr>
               </thead>
               <tbody>
-                {UserData.map((user) => (
+                {props.users.map((user) => (
                   <UserListItem
                     key={user.id}
-                    t1={user.username}
-                    t2={new Date(user.lastActive).toDateString()}
+                    login={user.login}
+                    firstName={user.firstName}
+                    surname={user.lastName}
                   />
                 ))}
               </tbody>
