@@ -4,23 +4,23 @@ import Card from "react-bootstrap/Card";
 
 const DetailsDisplay = (props) => {
   const DisplayDetails = () => {
-    const ParsedDetails = JSON.parse(props.data.item.details);
+    const details = props.data.item.details;
+    if (details == null) {
+      return "invalid details";
+    }
     if (props.data.itemType === "Car") {
-      /*return (
+      return (
         <div>
-          Price: {props.data.Details.dailyPrice} PLN per day
+          Model: {details.carModel}
           <br />
-          Model: {props.data.Details.model}
+          Car Id: {details.carId}
           <br />
-          Location: {props.data.Details.location}
+          Plate number: {details.carPlateNumber}
           <br />
-          Plate number: {props.data.Details.plateNumber}
-          <br />
-          Description: {props.data.Details.description}
+          Description: {details.carDescription}
           <br />
         </div>
-      );*/
-      return <div>Car ID: {ParsedDetails.carId}</div>;
+      );
     }
     if (props.data.bookingType === "Parking") {
       return (

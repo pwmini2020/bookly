@@ -1,5 +1,3 @@
-import bookingsData from "../mockData/allBookings2.json";
-
 import BookingsListItem from "./BookingsListItem";
 import NavButtons from "./NavButtons";
 import Table from "react-bootstrap/Table";
@@ -29,6 +27,7 @@ const mapStateToProps = (state) => ({
   totalPages: state.bookings.totalPages,
   page: state.bookings.page,
   fetchInProgress: state.bookings.fetchInProgress,
+  bookings: state.bookings.bookings,
 });
 
 const BookingsList = (props) => {
@@ -64,7 +63,12 @@ const BookingsList = (props) => {
   return (
     <div>
       {props.fetchInProgress ? (
-        <p>loading...</p>
+        <div className="text-center">
+          <br />
+          <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
       ) : (
         <div style={{ margin: "10px" }}>
           <Table bordered variant="secondary">
@@ -79,9 +83,11 @@ const BookingsList = (props) => {
               </tr>
             </thead>
             <tbody>
-              {bookingsData.map((booking) => (
-                <BookingsListItem key={booking.id} data={booking} />
-              ))}
+              {props.bookings.map((booking) =>
+                booking != null && booking.item != null ? (
+                  <BookingsListItem key={booking.id} data={booking} />
+                ) : null
+              )}
             </tbody>
           </Table>
 
