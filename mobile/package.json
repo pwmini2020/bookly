@@ -1,0 +1,41 @@
+{
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.13.4",
+    "@react-native-community/datetimepicker": "3.0.4",
+    "@react-native-community/masked-view": "0.1.10",
+    "@react-navigation/native": "^5.9.2",
+    "@react-navigation/stack": "^5.14.2",
+    "babel-plugin-transform-inline-environment-variables": "^0.4.3",
+    "expo": "~40.0.0",
+    "expo-av": "~8.7.0",
+    "prop-types": "^15.7.2",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
+    "react-native-bcrypt": "^2.4.0",
+    "react-native-dialog-input": "^1.0.8",
+    "react-native-dotenv": "^2.5.1",
+    "react-native-gesture-handler": "~1.8.0",
+    "react-native-reanimated": "~1.13.0",
+    "react-native-safe-area-context": "3.1.9",
+    "react-native-screens": "~2.15.2",
+    "react-native-toast-message": "^1.4.3",
+    "react-native-vector-icons": "^8.0.0",
+    "react-native-web": "~0.13.12",
+    "react-ridge-state": "^4.1.6"
+  },
+  "devDependencies": {
+    "@babel/core": "~7.9.0"
+  },
+  "scripts": {
+    "start": "APP_ENV=development NODE_ENV=development expo start",
+    "reset": "APP_ENV=development NODE_ENV=development expo r -c ",
+    "deploy": "APP_ENV=production expo publish",
+    "deploy:staging": "APP_ENV=staging expo publish",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo web",
+    "eject": "expo eject"
+  },
+  "private": true
+}

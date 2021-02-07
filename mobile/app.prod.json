@@ -1,0 +1,9 @@
+{
+  "expo": {
+    "name": "Bookly Mobile App",
+    "description": "Mobile app for Bookly ecosystem, allowing to book cars, flats and parkings.",
+    "slug": "bookly-mobile",
+    "icon": "./assets/logo.png",
+    "owner": "bookly"
+  }
+}
