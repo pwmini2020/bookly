@@ -34,6 +34,7 @@ const mapStateToProps = (state) => ({
 const BookingsList = (props) => {
   useEffect(() => {
     props.filterBookings(props.token, {}, {});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchNextPage = () => {
