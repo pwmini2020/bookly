@@ -2,6 +2,6 @@
 	"expo": {
 		"name": "Bookly Mobile App",
 		"slug": "bookly-mobile",
-		"icon": "./public/logo.png"
+		"icon": "./assets/logo.png"
 	}
 }
