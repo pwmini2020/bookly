@@ -7,5 +7,12 @@ export const getUsers = (token) => {
     headers: {
       "Security-Token": token,
     },
-  }).then((res) => res.json());
+  })
+    .then((res) => {
+      if (res.status !== 200) {
+        throw new Error(`request failed (${res.status})`);
+      }
+      return res;
+    })
+    .then((res) => res.json());
 };
