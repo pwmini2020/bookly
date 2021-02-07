@@ -6,8 +6,8 @@ import { filterBookings } from "../actionCreators/bookingsActionCreator";
 import "../styles/BookingsFilterPanel.css";
 
 const mapDispatchToProps = (dispatch) => ({
-  filterBookings: (token, filterSettings) =>
-    dispatch(filterBookings(token, filterSettings)),
+  filterBookings: (token, paginationSettings, filterSettings) =>
+    dispatch(filterBookings(token, paginationSettings, filterSettings)),
 });
 
 const mapStateToProps = (state) => ({
@@ -41,9 +41,11 @@ const BookingsFilterPanel = (props) => {
     };
   };
 
+  const TEMPpaginationSetting = { page: 0 };
+
   const submitFilterSettings = (e, filterSettings) => {
     e.preventDefault();
-    props.filterBookings(props.token, filterSettings);
+    props.filterBookings(props.token, TEMPpaginationSetting, filterSettings);
   };
 
   return (

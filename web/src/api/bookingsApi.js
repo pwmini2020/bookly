@@ -1,17 +1,99 @@
 const API_URL = process.env.REACT_APP_API_URL;
 
-export const getAll = (token) => {
-  return fetch(`${API_URL}/v1/bookings/`, {
-    method: "GET",
-    headers: {
-      "Security-Token": token,
-    },
-  }).then((res) => res.json());
+const getSortType = (sortBy) => {
+  switch (sortBy) {
+    case "username":
+      return "owner";
+    case "type":
+      return "itemType";
+    default:
+      return "";
+  }
+};
+
+const getSortOrder = (orderOfSorting) => {
+  switch (orderOfSorting) {
+    case "ascending":
+      return "ASC";
+    case "descending":
+      return "DESC";
+    default:
+      return "";
+  }
+};
+
+const concatBookingType = (dstString, typeName, oracle) => {
+  let result;
+
+  if (oracle) {
+    if (dstString === "") {
+      result = typeName;
+    } else {
+      result = dstString + "," + typeName;
+    }
+  } else {
+    result = dstString;
+  }
+
+  return result;
+};
+
+const getBookingType = (filterSettings) => {
+  let result = "";
+
+  result = concatBookingType(result, "Car", filterSettings.carBookingsSelected);
+  result = concatBookingType(
+    result,
+    "Room",
+    filterSettings.flatBookingsSelected
+  );
+  result = concatBookingType(
+    result,
+    "Parking",
+    filterSettings.parkingBookingsSelected
+  );
+
+  return result;
+};
+
+const getBookingsStatus = (filterSettings) => {
+  if (
+    filterSettings.showActiveSelected &&
+    filterSettings.showInactiveSelected
+  ) {
+    return "";
+  } else if (filterSettings.showActiveSelected) {
+    return "active";
+  } else if (filterSettings.showInactiveSelected) {
+    return "inactive";
+  } else {
+    return "";
+  }
+};
+
+const getRequestParams = (paginationSettings, filterSettings) => {
+  return {
+    page: paginationSettings.page,
+    sortType: getSortType(filterSettings.sortBy),
+    sortOrder: getSortOrder(filterSettings.orderOfSorting),
+    bookingType: getBookingType(filterSettings),
+    owner: filterSettings.username,
+    bookingsStatus: getBookingsStatus(filterSettings),
+  };
 };
 
 // NOT FINISHED
-export const getFilteredBookings = (token, filterSettings) => {
-  return fetch(`${API_URL}/v1/bookings?page=2`, {
+export const getFilteredBookings = (
+  token,
+  paginationSettings,
+  filterSettings
+) => {
+  const p = getRequestParams(paginationSettings, filterSettings);
+  const paramsString = `page=${p.page}&sort=${p.sortType}&sortOrder=${p.sortOrder}&type=${p.bookingType}&owner=${p.owner}&status=${p.bookingsStatus}`;
+
+  console.log(paramsString); // DEBUG
+
+  return fetch(`${API_URL}/v1/bookings?${paramsString}`, {
     method: "GET",
     headers: {
       "Security-Token": token,

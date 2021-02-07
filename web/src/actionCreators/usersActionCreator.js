@@ -33,8 +33,8 @@ export const fetchUsers = (token) => {
   return async (dispatch) => {
     try {
       dispatch(fetchUsersInProgress());
-      const usersList = await getUsers(token);
-      dispatch(saveUsers(usersList));
+      const responseBody = await getUsers(token);
+      dispatch(saveUsers(responseBody));
       dispatch(fetchUsersSucceeded());
     } catch (error) {
       console.error(error);

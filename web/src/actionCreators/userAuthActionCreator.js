@@ -30,8 +30,8 @@ export const loginUser = (login, password) => {
   return async (dispatch) => {
     try {
       dispatch(loginInProgress());
-      const response = await authenticateCredentials(login, password);
-      dispatch(saveToken(response.token));
+      const responseBody = await authenticateCredentials(login, password);
+      dispatch(saveToken(responseBody.token));
       dispatch(loginSucceeded());
     } catch (error) {
       console.error(error);
