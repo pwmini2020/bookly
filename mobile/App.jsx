@@ -1,14 +1,17 @@
 import React from "react";
 import Toast from 'react-native-toast-message';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {TouchableOpacity, View, Text} from "react-native";
+import {TouchableOpacity, View, Text, StyleSheet} from "react-native";
 import {createStackNavigator} from "@react-navigation/stack";
 import {NavigationContainer} from "@react-navigation/native";
 import HomeScreen from "./src/screens/HomeScreen/HomeScreen";
 import {logoutUserAsync} from "./src/services/auth.service";
-import tokenState from "./src/state";
+import {tokenState, loginState} from "./src/state";
 import { LogBox, YellowBox } from 'react-native';
 import RegisterScreen from "./src/screens/RegisterScreen/RegisterScreen";
+import HistoryScreen from "./src/screens/HistoryScreen/HistoryScreen";
+import DetailsScreen from "./src/screens/DetailsScreen/DetailsScreen";
+import * as RootNavigation from './src/helpers/navigation.heper';
 
 const toastConfig = {
     success: ({ text1, text2, props, ...rest }) => (
@@ -91,7 +94,10 @@ export default function App() {
 
     const logoutButton = () => (token ?
             <TouchableOpacity
-                onPress={() => logoutUserAsync()}
+                onPress={() => {
+                    logoutUserAsync().then(() => RootNavigation.navigate("Home"));
+
+                }}
             >
                 <Icon name="exit" size={35} color="#000000"/>
             </TouchableOpacity> : <></>
@@ -110,13 +116,16 @@ export default function App() {
     })
 
     return (
-        <NavigationContainer>
+        <NavigationContainer ref={RootNavigation.navigationRef}>
             <Stack.Navigator initialRouteName="Home">
                 <Stack.Screen name="Home"
                               component={HomeScreen}
                               options={{
                                   headerShown: true,
-                                  headerTitle: `Bookly${appEnv !== 'production' ? ` [${appEnv}]`  : ""}`,
+                                  headerTitle: (
+                                      `Bookly${appEnv !== 'production' ? `[${appEnv}] - ${loginState.useValue()}` : ""}`
+                                  ),
+                                  headerStyle: {...styles.headerStyle},
                                   headerTitleAlign: "center",
                                   headerRight: logoutButton
                               }}
@@ -124,8 +133,32 @@ export default function App() {
                 <Stack.Screen name="Register" component={RegisterScreen} options={{
                     headerTitle: ''
                 }}/>
+                <Stack.Screen name="History" component={HistoryScreen} options={{
+                    headerTitle: 'Bookings history',
+                    headerRight: logoutButton,
+                    headerTitleAlign: "center",
+                    headerShown: true,
+                    headerStyle: {...styles.headerStyle}
+                }}/>
+                <Stack.Screen name="Details" component={DetailsScreen} options={{
+                    headerTitle: '',
+                    headerRight: logoutButton,
+                    headerShown: true,
+                    headerStyle: {...styles.headerStyle}
+                }}/>
             </Stack.Navigator>
             <Toast config={toastConfig} ref={(ref) => Toast.setRef(ref)}/>
         </NavigationContainer>
     );
 }
+
+const styles = StyleSheet.create({
+    headerStyle: {
+        shadowColor: 'transparent',
+        shadowRadius: 0,
+        shadowOffset: {
+            height: 0,
+        },
+        elevation: 0
+    },
+})

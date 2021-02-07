@@ -1,5 +1,5 @@
 import {TOKEN_STRING, API_URL, API_V} from '@env';
-import {tokenState} from "../state";
+import {tokenState, loginState} from "../state";
 import {getItemAsync, removeItemAsync, setItemAsync} from "../helpers/asyncStorage.helper";
 import {errorToast, successToast} from "../helpers/toast.helper";
 
@@ -22,6 +22,7 @@ export const authenticateUserAsync = async (credentials) => {
    tokenState.set(token);
    if(token) {
        successToast('You have successfully logged in!');
+       loginState.set(credentials.login);
    }
    else {
        errorToast('Some login problem.');
@@ -31,6 +32,7 @@ export const authenticateUserAsync = async (credentials) => {
 export const logoutUserAsync = async () => {
     await removeItemAsync(TOKEN_STRING);
     tokenState.reset();
+    loginState.reset();
     successToast('You successfully logged out.')
 }
 
