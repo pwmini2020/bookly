@@ -1,4 +1,7 @@
 .BookingsFilterPanel {
-  border-width: 1px;
-  border-style: solid;
+  width: auto;
+  margin: 10px;
+  background-color: lightskyblue;
+  padding: 5px;
+  border-radius: 10px;
 }
