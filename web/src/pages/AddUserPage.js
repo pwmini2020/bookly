@@ -43,7 +43,6 @@ const AddUserPage = (props) => {
     if (props.requestInProgress) {
       return (
         <div>
-          <br />
           <div className="spinner-border text-primary" role="status">
             <span className="sr-only">Loading...</span>
           </div>
@@ -185,6 +184,7 @@ const AddUserPage = (props) => {
           value="Create a new user"
         />
       </form>
+      <br />
 
       {displayProgress()}
     </div>
