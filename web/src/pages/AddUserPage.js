@@ -52,14 +52,15 @@ const AddUserPage = (props) => {
   return (
     <div style={{ margin: "10px" }}>
       <form onSubmit={(e) => submitNewUserData(e, getFormData())}>
-        <div class="form-gorup row my-1">
-          <label for="email" class="col-sm-1 col-form-label">
-            Email:{" "}
+        <div className="form-gorup row my-1">
+          <label htmlFor="email" className="col-sm-2 col-form-label">
+            Email:
           </label>
-          <div class="col-sm-11">
+          <div className="col-sm-10">
             <input
               type="email"
-              class="form-control"
+              className="form-control"
+              placeholder="name@example.com"
               name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -67,14 +68,15 @@ const AddUserPage = (props) => {
           </div>
         </div>
 
-        <div class="form-gorup row my-1">
-          <label for="username" class="col-sm-1 col-form-label">
-            Username:{" "}
+        <div className="form-gorup row my-1">
+          <label htmlFor="username" className="col-sm-2 col-form-label">
+            Username:
           </label>
-          <div class="col-sm-11">
+          <div className="col-sm-10">
             <input
               type="text"
-              class="form-control"
+              className="form-control"
+              placeholder="username"
               name="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -82,14 +84,31 @@ const AddUserPage = (props) => {
           </div>
         </div>
 
-        <div class="form-gorup row my-1">
-          <label for="name" class="col-sm-1 col-form-label">
-            First name:{" "}
+        <div className="form-gorup row my-1">
+          <label htmlFor="password" className="col-sm-2 col-form-label">
+            Password:
           </label>
-          <div class="col-sm-11">
+          <div className="col-sm-10">
+            <input
+              type="password"
+              className="form-control"
+              placeholder="password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+        </div>
+
+        <div className="form-gorup row my-1">
+          <label htmlFor="name" className="col-sm-2 col-form-label">
+            First name:
+          </label>
+          <div className="col-sm-10">
             <input
               type="text"
-              class="form-control"
+              className="form-control"
+              placeholder="John"
               name="name"
               value={firstname}
               onChange={(e) => setFirstname(e.target.value)}
@@ -97,14 +116,15 @@ const AddUserPage = (props) => {
           </div>
         </div>
 
-        <div class="form-gorup row my-1">
-          <label for="surname" class="col-sm-1 col-form-label">
-            Surname:{" "}
+        <div className="form-gorup row my-1">
+          <label htmlFor="surname" className="col-sm-2 col-form-label">
+            Surname:
           </label>
-          <div class="col-sm-11">
+          <div className="col-sm-10">
             <input
               type="text"
-              class="form-control"
+              className="form-control"
+              placeholder="Smith"
               name="surname"
               value={surname}
               onChange={(e) => setSurname(e.target.value)}
@@ -112,14 +132,15 @@ const AddUserPage = (props) => {
           </div>
         </div>
 
-        <div class="form-gorup row my-1">
-          <label for="country" class="col-sm-1 col-form-label">
-            Country:{" "}
+        <div className="form-gorup row my-1">
+          <label htmlFor="country" className="col-sm-2 col-form-label">
+            Country:
           </label>
-          <div class="col-sm-11">
+          <div className="col-sm-10">
             <input
               type="text"
-              class="form-control"
+              className="form-control"
+              placeholder="Poland"
               name="country"
               value={country}
               onChange={(e) => setCountry(e.target.value)}
@@ -127,14 +148,15 @@ const AddUserPage = (props) => {
           </div>
         </div>
 
-        <div class="form-gorup row my-1">
-          <label for="address" class="col-sm-1 col-form-label">
-            Address:{" "}
+        <div className="form-gorup row my-1">
+          <label htmlFor="address" className="col-sm-2 col-form-label">
+            Address:
           </label>
-          <div class="col-sm-11">
+          <div className="col-sm-10">
             <input
               type="text"
-              class="form-control"
+              className="form-control"
+              placeholder="Address"
               name="address"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
@@ -143,7 +165,7 @@ const AddUserPage = (props) => {
         </div>
 
         <input
-          class="btn btn-primary my-1"
+          className="btn btn-primary my-1"
           type="submit"
           value="Generate a password and create a new user"
         />
