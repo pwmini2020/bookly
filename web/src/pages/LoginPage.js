@@ -30,7 +30,14 @@ const LoginPage = (props) => {
 
   const displayProgress = () => {
     if (props.loginInProgress) {
-      return <p>Signing in...</p>;
+      return (
+        <div>
+          <br />
+          <div className="spinner-border text-primary" role="status">
+            <span className="sr-only">Signing in...</span>
+          </div>
+        </div>
+      );
     } else if (props.loginFailed) {
       return <p className="text-danger">Incorrect credentials.</p>;
     }
