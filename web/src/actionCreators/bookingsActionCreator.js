@@ -29,6 +29,36 @@ const saveBookings = (bookings) => {
   };
 };
 
+export const nextPageBookings = () => {
+  return {
+    type: "NEXT_PAGE_BOOKINGS",
+  };
+};
+
+export const previousPageBookings = () => {
+  return {
+    type: "PREVIOUS_PAGE_BOOKINGS",
+  };
+};
+
+const saveTotalPagesBookings = (totalPages) => {
+  return {
+    type: "SAVE_TOTAL_PAGES_BOOKINGS",
+    payload: {
+      totalPages: totalPages,
+    },
+  };
+};
+
+export const saveBookingsFilters = (filters) => {
+  return {
+    type: "SAVE_BOOKINGS_FILTERS",
+    payload: {
+      filters: filters,
+    },
+  };
+};
+
 // NOT FINISHED
 export const filterBookings = (token, paginationSettings, filterSettings) => {
   return async (dispatch) => {
@@ -40,14 +70,15 @@ export const filterBookings = (token, paginationSettings, filterSettings) => {
         filterSettings
       );
 
+      // parse the details from string to JSON
       const pageSize = responseBody.numberOfElements;
       for (let i = 0; i < pageSize; i++) {
         const parsedDetails = JSON.parse(responseBody.content[i].item.details);
         responseBody.content[i].item.details = parsedDetails;
       }
 
-      const bookingsList = responseBody.content;
-      dispatch(saveBookings(bookingsList));
+      dispatch(saveBookings(responseBody.content));
+      dispatch(saveTotalPagesBookings(responseBody.totalPages));
       dispatch(fetchBookingsSucceeded());
     } catch (error) {
       console.error(error);

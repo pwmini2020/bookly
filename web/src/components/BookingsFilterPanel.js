@@ -1,17 +1,23 @@
 import { useState } from "react";
 import { connect } from "react-redux";
 
-import { filterBookings } from "../actionCreators/bookingsActionCreator";
+import {
+  filterBookings,
+  saveBookingsFilters,
+} from "../actionCreators/bookingsActionCreator";
 
 import "../styles/BookingsFilterPanel.css";
 
 const mapDispatchToProps = (dispatch) => ({
   filterBookings: (token, paginationSettings, filterSettings) =>
     dispatch(filterBookings(token, paginationSettings, filterSettings)),
+  saveBookingsFilters: (filters) => dispatch(saveBookingsFilters(filters)),
 });
 
 const mapStateToProps = (state) => ({
   token: state.userAuth.token,
+  page: state.bookings.page,
+  filterSettings: state.bookings.filters,
 });
 
 const BookingsFilterPanel = (props) => {
@@ -41,11 +47,11 @@ const BookingsFilterPanel = (props) => {
     };
   };
 
-  const TEMPpaginationSetting = { page: 0 };
-
   const submitFilterSettings = (e, filterSettings) => {
     e.preventDefault();
-    props.filterBookings(props.token, TEMPpaginationSetting, filterSettings);
+    const paginationSettings = { page: props.page };
+    props.saveBookingsFilters(filterSettings);
+    props.filterBookings(props.token, paginationSettings, props.filterSettings);
   };
 
   return (
