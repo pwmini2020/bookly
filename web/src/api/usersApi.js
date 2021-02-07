@@ -1,8 +1,9 @@
 const API_URL = process.env.REACT_APP_API_URL;
 
-// NOT FINISHED
-export const getUsers = (token) => {
-  return fetch(`${API_URL}/v1/users`, {
+export const getUsers = (token, paginationSettings) => {
+  const paramsString = `page=${paginationSettings.page}`;
+
+  return fetch(`${API_URL}/v1/users?${paramsString}`, {
     method: "GET",
     headers: {
       "Security-Token": token,

@@ -82,12 +82,12 @@ const getRequestParams = (paginationSettings, filterSettings) => {
   };
 };
 
-// NOT FINISHED
 export const getFilteredBookings = (
   token,
   paginationSettings,
   filterSettings
 ) => {
+  // filters are initially empty
   let paramsString;
   if (Object.keys(filterSettings).length === 0) {
     paramsString = `page=${paginationSettings.page}`;

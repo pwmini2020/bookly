@@ -1,4 +1,9 @@
-const initialState = { fetchInProgress: false, users: [] };
+const initialState = {
+  fetchInProgress: false,
+  users: [],
+  page: 0,
+  totalPages: 0,
+};
 
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -35,6 +40,27 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         users: action.payload.users,
+      };
+    }
+
+    case "NEXT_PAGE_USERS": {
+      return {
+        ...state,
+        page: state.page + 1,
+      };
+    }
+
+    case "PREVIOUS_PAGE_USERS": {
+      return {
+        ...state,
+        page: state.page - 1,
+      };
+    }
+
+    case "SAVE_TOTAL_PAGES_USERS": {
+      return {
+        ...state,
+        totalPages: action.payload.totalPages,
       };
     }
 
