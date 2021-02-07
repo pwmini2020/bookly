@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 import {View, StyleSheet, Button} from 'react-native'
 import DateTimePicker from '@react-native-community/datetimepicker';
 import DialogInput from 'react-native-dialog-input'
+import {resourceTypes} from "../../types/resource.types";
 
-const SearchFlatsTab = () => {
+const SearchFlatsTab = ({navigation}) => {
 	//Date States
 	const [date, setDate] = useState(new Date(1598051730000));
 	const [dateSet, setDateSet] = useState(false);
@@ -68,14 +69,14 @@ const SearchFlatsTab = () => {
 				<Button onPress={()=>setLocationShow(true)} title={location=="" ? "Location" : location}/>
 			</View>
 			<View style={styles.button}>
-				<Button onPress={() => setFlatsShow(true)} title={flatsNo=="" ? "Number of Flats" : flatsNo}/>
+				<Button onPress={() => setFlatsShow(true)} title={flatsNo=="" ? "Number of Guests" : flatsNo}/>
 			</View>
 			<View style={[styles.searchButton, styles.button]}>
 				<Button title="Search" color="red"/>
 			</View>
 		</View>
 		<View style={styles.viewBooking}>
-			<Button title="View Your Bookings..."/>
+			<Button onPress={() => navigation.navigate("History", {active: resourceTypes.flats})} title="View Your Bookings..."/>
 		</View>
 		{
 			dateShow && (

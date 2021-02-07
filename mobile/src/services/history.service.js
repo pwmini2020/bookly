@@ -3,7 +3,7 @@ import {fetchWithToken} from "../helpers/http.helper";
 import {loginState} from "../state";
 
 const queryString = (page, login) => {
-    return `${API_URL}/v${API_V}/bookings?owner=${login}&page=${page}`
+    return `${API_URL}/v${API_V}/bookings?page=${page}&owner=${login}`
 }
 
 export const getBookingsPageAsync = async (page = 0, login) => {

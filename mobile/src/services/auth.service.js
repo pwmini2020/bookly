@@ -19,10 +19,11 @@ export const authenticateUserAsync = async (credentials) => {
 
    const {token} = await response.json();
    await setItemAsync(TOKEN_STRING, token);
+   await setItemAsync("login", credentials.login);
    tokenState.set(token);
+   loginState.set(credentials.login);
    if(token) {
        successToast('You have successfully logged in!');
-       loginState.set(credentials.login);
    }
    else {
        errorToast('Some login problem.');
@@ -31,6 +32,7 @@ export const authenticateUserAsync = async (credentials) => {
 
 export const logoutUserAsync = async () => {
     await removeItemAsync(TOKEN_STRING);
+    await removeItemAsync('login');
     tokenState.reset();
     loginState.reset();
     successToast('You successfully logged out.')
@@ -38,8 +40,10 @@ export const logoutUserAsync = async () => {
 
 export const tryRestoreUserAsync = async () => {
     const token = await getItemAsync(TOKEN_STRING);
+    const login = await getItemAsync('login');
     if (token) {
         tokenState.set(token);
+        loginState.set(login);
         successToast('Successfully restored last session...');
     }
 }

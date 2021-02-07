@@ -8,37 +8,44 @@ import {
     getParkingsBookingPageAsync
 } from "../../services/history.service";
 import PaginatedListItem from "./PaginatedListItem";
+import PageButton from "./PageButtons";
 
 const PaginatedList = ({type, resource, h, hh, navigation, login}) => {
     const [height, _] = React.useState(h - hh);
     const [amount, setAmount] = React.useState(0);
     const [amountIsSet, setAmountIsSet] = React.useState(false);
     const [items, setItems] = React.useState([]);
+    const [resourceCall, setResourceCall] = React.useState();
 
     useEffect(() => {
-        const tee = (request) => {
-            return request(0,login).then(async response => response.ok ? await response.json() : null)
+        const tee = (request, page = 0) => {
+            return request(page, login).then(async response => response.ok ? await response.json() : null)
                 .then(json => {
                     if (json) {
-                        setAmount(json.numberOfElements);
+                        setAmount(json.totalElements);
                         setAmountIsSet(true);
                         setItems(json.content);
                     }
                 });
         }
 
+
+
         if (type === buttonTypes.cancel) {
             switch (resource) {
                 case resourceTypes.cars: {
                     tee(getCarsBookingsPageAsync);
+                    setResourceCall(() => getCarsBookingsPageAsync);
                     return;
                 }
                 case resourceTypes.flats: {
                     tee(getFlatsBookingPageAsync);
+                    setResourceCall(() => getFlatsBookingPageAsync);
                     return;
                 }
                 case resourceTypes.parking: {
                     tee(getParkingsBookingPageAsync);
+                    setResourceCall(() => getParkingsBookingPageAsync);
                     return;
                 }
             }
@@ -56,15 +63,25 @@ const PaginatedList = ({type, resource, h, hh, navigation, login}) => {
                         color='white'
                     />
                 </View>
-
                 :
                 <View>
+                    {amount > 0 &&
+                        <View>
                     {
                         items.map((val, idx) => {
                             return <PaginatedListItem key={idx} item={val} height={50} navigation={navigation}/>
                         })
                     }
-
+                    {
+                        resourceCall && <PageButton amount={amount} request={resourceCall} setItems={setItems}/>
+                    }
+                        </View>
+                    }
+                    <View style={{justifyContent: 'center', alignItems: 'center'}}>
+                    {amount === 0 && <Text style={{fontWeight: 'bold', fontSize: 17}}>
+                        {("Sorry, there is nothing to show.").toUpperCase()}
+                    </Text>}
+                    </View>
                 </View>
             }
         </View>
