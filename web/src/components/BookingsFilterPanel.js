@@ -16,11 +16,11 @@ const mapStateToProps = (state) => ({
 
 const BookingsFilterPanel = (props) => {
   const [username, setUsername] = useState("");
-  const [carBookingsSelected, setCarBookingsSelected] = useState(false);
-  const [flatBookingsSelected, setFlatBookingsSelected] = useState(false);
-  const [parkingBookingsSelected, setParkingBookingsSelected] = useState(false);
-  const [showActiveSelected, setShowActiveSelected] = useState(false);
-  const [showInactiveSelected, setShowInactiveSelected] = useState(false);
+  const [carBookingsSelected, setCarBookingsSelected] = useState(true);
+  const [flatBookingsSelected, setFlatBookingsSelected] = useState(true);
+  const [parkingBookingsSelected, setParkingBookingsSelected] = useState(true);
+  const [showActiveSelected, setShowActiveSelected] = useState(true);
+  const [showInactiveSelected, setShowInactiveSelected] = useState(true);
   const [sortBy, setSortBy] = useState("");
   const [orderOfSorting, setOrderOfSorting] = useState("");
 
@@ -47,80 +47,131 @@ const BookingsFilterPanel = (props) => {
   };
 
   return (
-    <div className="BookingsFilterPanel" style={{ margin: "10px" }}>
+    <div className="BookingsFilterPanel">
       <form onSubmit={(e) => submitFilterSettings(e, getFilterSettings())}>
-        <label htmlFor="username">Username: </label>
-        <input
-          type="text"
-          name="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <br />
+        <div className="form-row my-1">
+          <div className="col-md-4 mb-2">
+            <label htmlFor="username" className="col-form-label">
+              Username:{" "}
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              name="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
+          <div className="col-md-4 mb-2">
+            <label htmlFor="sortBy" className="col-form-label">
+              Sort by:{" "}
+            </label>
 
-        <label htmlFor="carBookings">Car:</label>
-        <input
-          type="checkbox"
-          name="carBookings"
-          value={carBookingsSelected}
-          onChange={(e) => setCarBookingsSelected(e.target.checked)}
-        />
+            <select
+              className="custom-select"
+              name="sortBy"
+              onChange={(e) => setSortBy(e.target.value)}
+            >
+              <option value=""></option>
+              <option value="type">type</option>
+              <option value="username">username</option>
+            </select>
+          </div>
+          <div className="col-md-4 mb-2">
+            <label htmlFor="orderOfSorting" className="col-form-label">
+              Order of sorting:{" "}
+            </label>
 
-        <label htmlFor="flatBookings">Flat:</label>
-        <input
-          type="checkbox"
-          name="flatBookings"
-          value={flatBookingsSelected}
-          onChange={(e) => setFlatBookingsSelected(e.target.checked)}
-        />
+            <select
+              name="orderOfSorting"
+              className="custom-select"
+              onChange={(e) => setOrderOfSorting(e.target.value)}
+              disabled={isOrderOfSortingDisabled()}
+            >
+              <option value=""></option>
+              <option value="ascending">ascending</option>
+              <option value="descending">descending</option>
+            </select>
+          </div>
+        </div>
 
-        <label htmlFor="parkingBookings">Parking:</label>
-        <input
-          type="checkbox"
-          name="parkingBookings"
-          value={parkingBookingsSelected}
-          onChange={(e) => setParkingBookingsSelected(e.target.checked)}
-        />
-        <br />
+        <div className="form-row my-1">
+          <div class="form-check form-check-inline mx-1">
+            <label htmlFor="carBookings" className="form-check-label">
+              Car:
+            </label>
+            <input
+              className="form-check-input mx-1"
+              type="checkbox"
+              name="carBookings"
+              defaultChecked={carBookingsSelected}
+              value={carBookingsSelected}
+              onChange={(e) => setCarBookingsSelected(e.target.checked)}
+            />
+          </div>
 
-        <label htmlFor="sortBy">Sort by: </label>
-        <select name="sortBy" onChange={(e) => setSortBy(e.target.value)}>
-          <option value=""></option>
-          <option value="type">type</option>
-          <option value="username">username</option>
-        </select>
-        <br />
+          <div class="form-check form-check-inline mx-1">
+            <label htmlFor="flatBookings" className="form-check-label">
+              Flat:
+            </label>
+            <input
+              className="form-check-input mx-1"
+              type="checkbox"
+              name="flatBookings"
+              defaultChecked={flatBookingsSelected}
+              value={flatBookingsSelected}
+              onChange={(e) => setFlatBookingsSelected(e.target.checked)}
+            />
+          </div>
 
-        <label htmlFor="orderOfSorting">Order of sorting: </label>
-        <select
-          name="orderOfSorting"
-          onChange={(e) => setOrderOfSorting(e.target.value)}
-          disabled={isOrderOfSortingDisabled()}
-        >
-          <option value=""></option>
-          <option value="ascending">ascending</option>
-          <option value="descending">descending</option>
-        </select>
-        <br />
+          <div class="form-check form-check-inline mx-1">
+            <label htmlFor="parkingBookings" className="form-check-label">
+              Parking:
+            </label>
+            <input
+              className="form-check-input mx-1"
+              type="checkbox"
+              name="parkingBookings"
+              defaultChecked={parkingBookingsSelected}
+              value={parkingBookingsSelected}
+              onChange={(e) => setParkingBookingsSelected(e.target.checked)}
+            />
+          </div>
 
-        <label htmlFor="showActive">Active:</label>
-        <input
-          type="checkbox"
-          name="showActive"
-          value={showActiveSelected}
-          onChange={(e) => setShowActiveSelected(e.target.checked)}
-        />
+          <div class="form-check form-check-inline ml-5 mr-1">
+            <label htmlFor="showActive" className="form-check-label">
+              Active:
+            </label>
+            <input
+              className="form-check-input mx-1"
+              type="checkbox"
+              name="showActive"
+              defaultChecked={showActiveSelected}
+              value={showActiveSelected}
+              onChange={(e) => setShowActiveSelected(e.target.checked)}
+            />
+          </div>
 
-        <label htmlFor="showInactive">Inactive:</label>
-        <input
-          type="checkbox"
-          name="showInactive"
-          value={showInactiveSelected}
-          onChange={(e) => setShowInactiveSelected(e.target.checked)}
-        />
-        <br />
+          <div class="form-check form-check-inline mx-1">
+            <label htmlFor="showInactive" className="form-check-label">
+              Inactive:
+            </label>
+            <input
+              className="form-check-input mx-1"
+              type="checkbox"
+              name="showInactive"
+              defaultChecked={showInactiveSelected}
+              value={showInactiveSelected}
+              onChange={(e) => setShowInactiveSelected(e.target.checked)}
+            />
+          </div>
 
-        <input type="submit" value="Filter" />
+          <input
+            type="submit"
+            class="btn btn-primary btn-sm mx-5"
+            value="Filter"
+          />
+        </div>
       </form>
     </div>
   );
