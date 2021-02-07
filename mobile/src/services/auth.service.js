@@ -1,5 +1,5 @@
 import {TOKEN_STRING, API_URL, API_V} from '@env';
-import tokenState from "../state";
+import {tokenState} from "../state";
 import {getItemAsync, removeItemAsync, setItemAsync} from "../helpers/asyncStorage.helper";
 import {errorToast, successToast} from "../helpers/toast.helper";
 
