@@ -5,10 +5,9 @@ import Popup from "reactjs-popup";
 
 const BookingsListItem = (props) => {
   const displayTypeSpecificRows = () => {
-    //const ParsedDetails = JSON.parse(props.data.item.details);
-    const details = props.data.Details;
+    const details = props.data.item.details;
     if (details == null) {
-      return "Inavlid details";
+      return "Invalid details";
     }
     switch (props.data.itemType) {
       case "Car":
