@@ -4,10 +4,6 @@ import Button from "react-bootstrap/Button";
 import Popup from "reactjs-popup";
 
 const BookingsListItem = (props) => {
-  const deleteBooking = () => {
-    console.log("delete clicked");
-  };
-
   const displayTypeSpecificRows = () => {
     switch (props.data.bookingType) {
       case "Car":
@@ -76,11 +72,6 @@ const BookingsListItem = (props) => {
             <DetailsDisplay data={props.data} />
           </Popup>
         </div>
-      </td>
-      <td>
-        <Button variant="danger" onClick={() => deleteBooking()}>
-          Delete
-        </Button>
       </td>
     </tr>
   );
