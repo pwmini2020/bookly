@@ -16,6 +16,7 @@ const mapStateToProps = (state) => ({
 const AddUserPage = (props) => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [firstname, setFirstname] = useState("");
   const [surname, setSurname] = useState("");
   const [country, setCountry] = useState("");
@@ -24,9 +25,10 @@ const AddUserPage = (props) => {
   const getFormData = () => {
     return {
       email: email,
-      username: username,
-      firstname: firstname,
-      surname: surname,
+      login: username,
+      password: password,
+      firstName: firstname,
+      lastName: surname,
       country: country,
       address: address,
     };
