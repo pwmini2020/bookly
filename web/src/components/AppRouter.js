@@ -5,7 +5,6 @@ import AllUsersPage from "../pages/AllUsersPage";
 import NotFoundPage from "../pages/NotFoundPage";
 
 import Header from "./Header";
-import Navbar from "./Navbar";
 
 import { connect } from "react-redux";
 
@@ -24,7 +23,6 @@ const AppRouter = (props) => {
   return (
     <Router>
       <Header />
-      {props.userIsLoggedIn && <Navbar />}
 
       <Switch>
         <Route path="/login" component={LoginPage} />
