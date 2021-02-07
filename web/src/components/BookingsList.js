@@ -16,7 +16,7 @@ const BookingsList = (props) => {
   };
 
   return (
-    <div>
+    <div style={{ margin: "10px" }}>
       <Table bordered variant="secondary">
         <thead>
           <tr>
