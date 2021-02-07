@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import TabName from './TabName'
 import {Text, SafeAreaView, StyleSheet, View} from 'react-native';
+import {resourceTypes} from "../types/resource.types";
 
-const TabSwitcher = ({activeCars, activeFlats, activeParking}) => {
+const TabSwitcher = ({activeCars, activeFlats, activeParking, caller}) => {
 	const [active, setActive] = useState({
-									"Cars": true,
-									"Flats": false,
-									"Parking": false
+									"Cars": caller ? caller === resourceTypes.cars : true,
+									"Flats": caller ? caller === resourceTypes.flats : false,
+									"Parking": caller ? caller === resourceTypes.parking : false
 								});
 	const switchTab = (tabName) => {
 		setActive({
@@ -14,7 +15,7 @@ const TabSwitcher = ({activeCars, activeFlats, activeParking}) => {
 			"Flats": tabName === "Flats",
 			"Parking": tabName === "Parking"
 		})
-	}	
+	};
     return (
         <View style={{flex: 1}}>
 			<View style={styles.tabContainer}>
