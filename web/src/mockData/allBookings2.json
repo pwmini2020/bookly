@@ -1,0 +1,28 @@
+[
+    {
+        "id": 11,
+        "owner": {
+            "id": 1,
+            "email": null,
+            "country": null,
+            "address": null,
+            "login": "brownfrog616",
+            "password": "dinosaur",
+            "firstName": "Adam",
+            "lastName": "Turner",
+            "securityToken": "f0e9b356-d597-4cbf-b8ef-4f61d038f66d"
+        },
+        "startDateTime": "2021-12-12T00:00:00",
+        "item": {
+            "id": 11,
+            "itemId": 25,
+            "name": "Car",
+            "startDateTime": "2021-12-12T00:00:00",
+            "endDateTime": "2021-12-13T00:00:00",
+            "details": "{\"id\": 25, \"carId\": 1, \"tenantId\": 1, \"endDateTime\": {\"hour\": 0, \"nano\": 0, \"year\": 2021, \"month\": \"DECEMBER\", \"minute\": 0, \"second\": 0, \"dayOfWeek\": \"MONDAY\", \"dayOfYear\": 347, \"chronology\": {\"id\": \"ISO\", \"calendarType\": \"iso8601\"}, \"dayOfMonth\": 13, \"monthValue\": 12}, \"startDateTime\": {\"hour\": 0, \"nano\": 0, \"year\": 2021, \"month\": \"DECEMBER\", \"minute\": 0, \"second\": 0, \"dayOfWeek\": \"SUNDAY\", \"dayOfYear\": 346, \"chronology\": {\"id\": \"ISO\", \"calendarType\": \"iso8601\"}, \"dayOfMonth\": 12, \"monthValue\": 12}, \"tenantSurname\": \"Turner\", \"tenantFirstname\": \"Adam\"}",
+            "active": true
+        },
+        "itemType": "Car",
+        "active": true
+    }
+]
