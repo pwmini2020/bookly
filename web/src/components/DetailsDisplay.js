@@ -53,7 +53,7 @@ const DetailsDisplay = (props) => {
     <Card variant="info" className="DetailsDisplay">
       <Card.Body>
         <Card.Title>Details for booking {props.data.id}</Card.Title>
-        <Card.Text>
+        <div>
           Booking type: {props.data.itemType}
           <br />
           Date Begun: {new Date(props.data.item.startDateTime).toDateString()}
@@ -61,7 +61,7 @@ const DetailsDisplay = (props) => {
           Date Ended: {new Date(props.data.item.endDateTime).toDateString()}
           <br />
           {DisplayDetails()}
-        </Card.Text>
+        </div>
       </Card.Body>
     </Card>
   );
