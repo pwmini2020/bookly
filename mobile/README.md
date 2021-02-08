@@ -1,4 +1,5 @@
 # Bookly mobile
+![Expo Bookly Publish](https://github.com/pwmini2020/bookly/workflows/Expo%20Bookly%20Publish/badge.svg)
 ![Expo Bookly Staging](https://github.com/pwmini2020/bookly/workflows/Expo%20Bookly%20Staging/badge.svg)
 
 - Project `PRODUCTION` link: https://expo.io/@bookly/projects/bookly-mobile
