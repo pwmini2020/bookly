@@ -13,8 +13,8 @@ const mapStateToProps = (state) => ({
 });
 
 const LoginPage = (props) => {
-  const [username, setUsername] = useState("test1");
-  const [password, setPassword] = useState("test1");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   // after a user logs in switch the page to /summary
   useEffect(() => {
