@@ -31,19 +31,25 @@ const DetailsDisplay = (props) => {
             <br />
           </div>
         );
-      /*case "Flat":
+      case "Room":
         return (
           <div>
-            Price: {props.data.Details.dailyPrice} PLN per day
+            Price: {details.price} PLN per day
             <br />
-            Location: {props.data.Details.location}
+            Name: {details.flat.name}
             <br />
-            Number of rooms: {props.data.Details.Number_of_rooms}
+            Number of guests: {details.maxGuests}
             <br />
-            Description: {props.data.Details.description}
+            Country: {details.flat.address.country}
+            <br />
+            City: {details.flat.address.city}
+            <br />
+            Street name: {details.flat.address.streetName}
+            <br />
+            Post code: {details.flat.address.postCode}
             <br />
           </div>
-        );*/
+        );
       default:
         return <div>unexpected booking type</div>;
     }
