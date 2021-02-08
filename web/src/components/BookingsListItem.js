@@ -21,17 +21,15 @@ const BookingsListItem = (props) => {
           </div>
         );
 
-      /*case "Flat":
+      case "Room":
         return (
           <div>
+            <div className="detailsRow">Name: {details.flat.name}</div>
             <div className="detailsRow">
-              Bedrooms: {props.data.Details.Number_of_rooms}
-            </div>
-            <div className="detailsRow">
-              Location: {props.data.Details.location}
+              Number of guests: {details.noOfGuests}
             </div>
           </div>
-        );*/
+        );
 
       case "Parking":
         return (
