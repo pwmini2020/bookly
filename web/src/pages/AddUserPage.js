@@ -21,6 +21,7 @@ const AddUserPage = (props) => {
   const [surname, setSurname] = useState("");
   const [country, setCountry] = useState("");
   const [address, setAddress] = useState("");
+  const [phoneNo, setPhoneNo] = useState("");
 
   const getFormData = () => {
     return {
@@ -31,6 +32,7 @@ const AddUserPage = (props) => {
       lastName: surname,
       country: country,
       address: address,
+      phoneNumber: phoneNo,
     };
   };
 
@@ -174,6 +176,22 @@ const AddUserPage = (props) => {
               name="address"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
+            />
+          </div>
+        </div>
+
+        <div className="form-gorup row my-1">
+          <label htmlFor="phoneNo" className="col-sm-2 col-form-label">
+            Phone number:
+          </label>
+          <div className="col-sm-10">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="123456789"
+              name="phoneNo"
+              value={phoneNo}
+              onChange={(e) => setPhoneNo(e.target.value)}
             />
           </div>
         </div>
