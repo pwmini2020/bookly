@@ -1,0 +1,21 @@
+name: Deploy-Web-App-Heroku
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.10.9
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "bookly-web"
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
+          appdir: web
+          healthcheck: "https://bookly-web.herokuapp.com/health"
+          checkstring: "ok"
+          rollbackonhealthcheckfailed: true
