@@ -12,7 +12,8 @@ Bookly is the central component of an app which allows making bookings of three 
 
 ## Web App <a name = "web_app"></a>
 
-The web application is meant to be used by system administrators.
+The web application is meant to be used by system administrators.<br/>
+http://bookly-web.herokuapp.com/
 
 ## Mobile App <a name = "mobile_app"></a>
 
