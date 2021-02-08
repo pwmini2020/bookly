@@ -1,6 +1,6 @@
-node v12.8.4
+node v12.8.4 </br>
 
-npm install
-npm run
+npm install </br>
+npm run </br>
 
 http://bookly-web.herokuapp.com/
