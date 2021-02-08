@@ -122,3 +122,7 @@ Thumbs.db
 # Folders to ignore
 /js/coverage/
 /node_modules/
+
+# firebase hosting
+.firebase
+.firebaserc
