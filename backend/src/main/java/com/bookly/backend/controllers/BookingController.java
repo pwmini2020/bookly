@@ -1,16 +1,18 @@
 package com.bookly.backend.controllers;
 
 import com.bookly.backend.models.Booking;
+import com.bookly.backend.models.Reservation;
 import com.bookly.backend.services.BookingService;
+import com.bookly.backend.services.ReservationService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @Api(tags = "Bookings Management")
 @RestController
@@ -19,17 +21,18 @@ import java.util.List;
 public class BookingController {
 
     private final BookingService bookingService;
+    private final ReservationService reservationService;
 
     @GetMapping
     @ApiOperation(value = "Fetches all the bookings with possibility to add a filter")
     @ApiImplicitParam(name = "Security-Token", paramType = "header", dataTypeClass = String.class)
-    public ResponseEntity<List<Booking>> getBookings(@RequestParam(required = false) String filter) {
-        List<Booking> responseBookingList;
-        if (filter == null) {
-            responseBookingList = bookingService.getAllBookings();
-        } else {
-            responseBookingList = bookingService.filterAllBookings(filter);
-        }
+    public ResponseEntity<Page<Booking>> getBookings(@RequestParam(required = false, defaultValue = "") String status,
+                                                     @RequestParam(required = false, defaultValue = "") String type,
+                                                     @RequestParam(required = false, defaultValue = "") String owner,
+                                                     @RequestParam(required = false, defaultValue = "asc") String sortOrder,
+                                                     @RequestParam(required = false, defaultValue = "empty") String sort,
+                                                     @RequestParam(required = false, defaultValue = "0") Integer page) {
+        Page<Booking> responseBookingList = bookingService.filterAllBookings(status, type, owner, page, sort, sortOrder);
         return new ResponseEntity<>(responseBookingList, HttpStatus.OK);
     }
 
@@ -49,6 +52,17 @@ public class BookingController {
         return new ResponseEntity<>(bookingService.saveBooking(newBooking), HttpStatus.OK);
     }
 
+    @PostMapping("/reservations")
+    @ApiOperation(value = "Make reservation of some item")
+    @ApiImplicitParam(name = "Security-Token", paramType = "header", dataTypeClass = String.class)
+    public ResponseEntity<Boolean> makeReservation(@RequestBody Reservation reservation) {
+        if (reservation.getFromDate() == null || reservation.getToDate() == null) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        if (reservation.getItemId() == null || reservation.getItemId() < 0) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        if (reservation.getUserId() == null || reservation.getUserId() < 0) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        if (reservation.getItemType() == null) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(reservationService.makeReservation(reservation), HttpStatus.OK);
+    }
+
     @PutMapping("/{id}")
     @ApiOperation(value = "Updates specific booking if one exists")
     @ApiImplicitParam(name = "Security-Token", paramType = "header", dataTypeClass = String.class)
@@ -63,10 +77,7 @@ public class BookingController {
     @ApiOperation(value = "Deletes specific booking from the database")
     @ApiImplicitParam(name = "Security-Token", paramType = "header", dataTypeClass = String.class)
     public ResponseEntity<String> deleteBooking(@PathVariable(name = "id") Long bookingId) {
-        if (bookingService.deleteBookingById(bookingId)) {
-            return new ResponseEntity<>("Booking deleted", HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        reservationService.removeReservation(bookingId);
+        return new ResponseEntity<>("Booking deleted", HttpStatus.OK);
     }
 }

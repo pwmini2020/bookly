@@ -21,6 +21,10 @@ public class SecurityFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
 
+        if (httpRequest.getRequestURL().toString().contains("/users") && httpRequest.getMethod().equals("POST")) {
+            chain.doFilter(request, response);
+        }
+
         String securityToken = httpRequest.getHeader("Security-Token");
 
         if (securityToken != null && userService.tryGetUserByToken(securityToken).isPresent()) {

@@ -43,7 +43,7 @@ public class FiltersConfig {
     public FilterRegistrationBean<SecurityFilter> securityFilter() {
         FilterRegistrationBean<SecurityFilter> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setFilter(new SecurityFilter(userService));
-        registrationBean.addUrlPatterns("/v1/bookings/*");
+        registrationBean.addUrlPatterns("/v1/bookings/*", "/v1/users/*");
         registrationBean.setOrder(2);
         return registrationBean;
     }
