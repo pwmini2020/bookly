@@ -37,7 +37,7 @@ const BookingsListItem = (props) => {
             <div className="detailsRow">
               Parking name: {details.parkingName}
             </div>
-            <div className="detailsRow">Parking id: {details.parkingId}</div>
+            <div className="detailsRow">Price: {details.price}</div>
           </div>
         );
 

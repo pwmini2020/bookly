@@ -29,6 +29,8 @@ const DetailsDisplay = (props) => {
             <br />
             Parking id: {details.parkingId}
             <br />
+            Price: {details.price} PLN per day
+            <br />
           </div>
         );
       case "Room":
@@ -38,7 +40,9 @@ const DetailsDisplay = (props) => {
             <br />
             Name: {details.flat.name}
             <br />
-            Number of guests: {details.maxGuests}
+            Flat type: {details.flat.flatType}
+            <br />
+            Number of guests: {details.noOfGuests}
             <br />
             Country: {details.flat.address.country}
             <br />
