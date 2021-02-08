@@ -15,6 +15,7 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "bookly-web"
           heroku_email: ${{secrets.HEROKU_EMAIL}}
+          remote_branch: master
           appdir: web
           healthcheck: "https://bookly-web.herokuapp.com/health"
           checkstring: "ok"
