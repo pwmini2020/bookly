@@ -17,6 +17,3 @@ jobs:
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           remote_branch: master
           appdir: web
-          healthcheck: "https://bookly-web.herokuapp.com/health"
-          checkstring: "ok"
-          rollbackonhealthcheckfailed: true
