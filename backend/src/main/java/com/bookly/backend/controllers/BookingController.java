@@ -5,6 +5,7 @@ import com.bookly.backend.services.BookingService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,16 +14,13 @@ import java.util.List;
 
 @Api(tags = "Bookings Management")
 @RestController
-@RequestMapping("/v1")
+@AllArgsConstructor
+@RequestMapping("/v1/bookings")
 public class BookingController {
 
     private final BookingService bookingService;
 
-    public BookingController(BookingService bookingService) {
-        this.bookingService = bookingService;
-    }
-
-    @GetMapping("/bookings")
+    @GetMapping
     @ApiOperation(value = "Fetches all the bookings with possibility to add a filter")
     @ApiImplicitParam(name = "Security-Token", paramType = "header", dataTypeClass = String.class)
     public ResponseEntity<List<Booking>> getBookings(@RequestParam(required = false) String filter) {
@@ -35,7 +33,7 @@ public class BookingController {
         return new ResponseEntity<>(responseBookingList, HttpStatus.OK);
     }
 
-    @GetMapping("/bookings/{id}")
+    @GetMapping("/{id}")
     @ApiOperation(value = "Retrieves the booking with specified ID if one exists")
     @ApiImplicitParam(name = "Security-Token", paramType = "header", dataTypeClass = String.class)
     public ResponseEntity<Booking> getBookingById(@PathVariable(name = "id") Long bookingId) {
@@ -44,14 +42,14 @@ public class BookingController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping("/bookings")
+    @PostMapping
     @ApiOperation(value = "Adds new booking to the database")
     @ApiImplicitParam(name = "Security-Token", paramType = "header", dataTypeClass = String.class)
     public ResponseEntity<Booking> addNewBooking(@RequestBody Booking newBooking) {
         return new ResponseEntity<>(bookingService.saveBooking(newBooking), HttpStatus.OK);
     }
 
-    @PutMapping("/bookings/{id}")
+    @PutMapping("/{id}")
     @ApiOperation(value = "Updates specific booking if one exists")
     @ApiImplicitParam(name = "Security-Token", paramType = "header", dataTypeClass = String.class)
     public ResponseEntity<Booking> updateBooking(@PathVariable(name = "id") Long bookingId,
@@ -61,7 +59,7 @@ public class BookingController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @DeleteMapping("/bookings/{id}")
+    @DeleteMapping("/{id}")
     @ApiOperation(value = "Deletes specific booking from the database")
     @ApiImplicitParam(name = "Security-Token", paramType = "header", dataTypeClass = String.class)
     public ResponseEntity<String> deleteBooking(@PathVariable(name = "id") Long bookingId) {

@@ -3,6 +3,7 @@ import {View, StyleSheet, Button} from 'react-native'
 import DateTimePicker from '@react-native-community/datetimepicker';
 import DialogInput from 'react-native-dialog-input'
 import {resourceTypes} from "../../types/resource.types";
+import {errorToast} from "../../helpers/toast.helper";
 
 const SearchCarsTab = ({navigation}) => {
     //Date States
@@ -33,6 +34,21 @@ const SearchCarsTab = ({navigation}) => {
         showMode('date');
     };
 
+    const validateInput = () => {
+        if(!dateSet) {
+            errorToast('Set date.');
+            return false;
+        }
+        if(!location) {
+            errorToast('Set location.');
+            return false;
+        }
+        if(!carType) {
+            errorToast('Set car type.');
+        }
+        return true;
+    }
+
 
     return (
             <>
@@ -48,7 +64,22 @@ const SearchCarsTab = ({navigation}) => {
                         <Button onPress={() => setCarTypeShow(true)} title={carType === "" ? "Car Type" : carType}/>
                     </View>
                     <View style={[styles.searchButton, styles.button]}>
-                        <Button title="Search" color="red"/>
+                        <Button
+                            title="Search"
+                            color="red"
+                            onPress={() => {
+                                if(validateInput()) {
+                                    navigation.navigate("Search", {
+                                        resource: resourceTypes.cars,
+                                        options: {
+                                            location,
+                                            date,
+                                            carType
+                                        }
+                                    });
+                                }
+                            }}
+                        />
                     </View>
                 </View>
                 <View style={styles.viewBooking}>

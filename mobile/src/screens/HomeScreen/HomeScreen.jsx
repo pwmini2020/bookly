@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {View, Text} from "react-native";
-import Login from "../../components/Login";
-import TabSwitcher from "../../components/TabSwitcher";
+import Login from "../../components/Auth/Login";
+import TabSwitcher from "../../components/TabSwitcher/TabSwitcher";
 import SearchCarsTab from "../../components/SearchTabs/SearchCarsTab.jsx"
 import SearchFlatsTab from "../../components/SearchTabs/SearchFlatsTab.jsx"
 import SearchParkingTab from "../../components/SearchTabs/SearchParkingTab.jsx"
@@ -12,7 +12,6 @@ const HomeScreen = ({navigation, route}) => {
     const token = tokenState.useValue();
 
     useEffect(() => {
-        //TODO: uncomment once backend is connected.
         if (!token) {
             tryRestoreUserAsync();
         }

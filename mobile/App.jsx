@@ -11,8 +11,10 @@ import { LogBox, YellowBox } from 'react-native';
 import RegisterScreen from "./src/screens/RegisterScreen/RegisterScreen";
 import HistoryScreen from "./src/screens/HistoryScreen/HistoryScreen";
 import DetailsScreen from "./src/screens/DetailsScreen/DetailsScreen";
+import SearchListScreen from "./src/screens/SearchListScreen/SearchListScreen";
 import * as RootNavigation from './src/helpers/navigation.heper';
 
+// Custom styles for toast notifications.
 const toastConfig = {
     success: ({ text1, text2, props, ...rest }) => (
         <View style={{
@@ -84,7 +86,6 @@ const toastConfig = {
     )
 };
 
-
 export default function App() {
     const Stack = createStackNavigator();
 
@@ -131,7 +132,9 @@ export default function App() {
                               }}
                 />
                 <Stack.Screen name="Register" component={RegisterScreen} options={{
-                    headerTitle: ''
+                    headerTitle: 'Register',
+                    headerStyle: {...styles.headerStyle},
+                    headerTitleAlign: "center",
                 }}/>
                 <Stack.Screen name="History" component={HistoryScreen} options={{
                     headerTitle: 'Bookings history',
@@ -144,6 +147,13 @@ export default function App() {
                     headerTitle: '',
                     headerRight: logoutButton,
                     headerShown: true,
+                    headerStyle: {...styles.headerStyle}
+                }}/>
+                <Stack.Screen name="Search" component={SearchListScreen} options={{
+                    headerTitle: 'Search results',
+                    headerRight: logoutButton,
+                    headerShown: true,
+                    headerTitleAlign: 'center',
                     headerStyle: {...styles.headerStyle}
                 }}/>
             </Stack.Navigator>

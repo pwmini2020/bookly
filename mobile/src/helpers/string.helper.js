@@ -7,7 +7,7 @@ export const splitString = (str) => {
     else {
         result = str.split(/(?=[A-Z])/);
     }
-    result.join(" ");
+    result = result.join(" ");
     result = result.charAt(0).toUpperCase() + result.slice(1);
     return result;
 }
