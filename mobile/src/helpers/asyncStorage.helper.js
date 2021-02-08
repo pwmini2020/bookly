@@ -17,7 +17,7 @@ export const getItemAsync = async (key) => {
         return jsonValue;
     } catch (e) {
         if(process.env.APP_ENV === 'development') {
-            errorToast(e.message);
+            errorToast(e.message());
         }
     }
 }

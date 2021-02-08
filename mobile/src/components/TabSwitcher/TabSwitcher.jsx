@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import TabName from './TabName'
 import {Text, SafeAreaView, StyleSheet, View} from 'react-native';
-import {resourceTypes} from "../types/resource.types";
+import {resourceTypes} from "../../types/resource.types";
 
 const TabSwitcher = ({activeCars, activeFlats, activeParking, caller}) => {
 	const [active, setActive] = useState({

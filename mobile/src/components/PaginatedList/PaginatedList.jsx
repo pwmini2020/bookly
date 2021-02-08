@@ -9,13 +9,17 @@ import {
 } from "../../services/history.service";
 import PaginatedListItem from "./PaginatedListItem";
 import PageButton from "./PageButtons";
+import {useIsFocused} from "@react-navigation/core";
+import {loginState} from "../../state";
 
-const PaginatedList = ({type, resource, h, hh, navigation, login}) => {
+const PaginatedList = ({type, resource, h, hh, navigation}) => {
     const [height, _] = React.useState(h - hh);
     const [amount, setAmount] = React.useState(0);
     const [amountIsSet, setAmountIsSet] = React.useState(false);
     const [items, setItems] = React.useState([]);
     const [resourceCall, setResourceCall] = React.useState();
+    const isFocused = useIsFocused();
+    const login = loginState.useValue();
 
     useEffect(() => {
         const tee = (request, page = 0) => {
@@ -28,8 +32,6 @@ const PaginatedList = ({type, resource, h, hh, navigation, login}) => {
                     }
                 });
         }
-
-
 
         if (type === buttonTypes.cancel) {
             switch (resource) {
@@ -50,7 +52,7 @@ const PaginatedList = ({type, resource, h, hh, navigation, login}) => {
                 }
             }
         }
-    }, [type, resource])
+    }, [type, resource, isFocused])
 
     return (
         <View style={styles.mainView}>
@@ -69,7 +71,7 @@ const PaginatedList = ({type, resource, h, hh, navigation, login}) => {
                         <View>
                     {
                         items.map((val, idx) => {
-                            return <PaginatedListItem key={idx} item={val} height={50} navigation={navigation}/>
+                            return <PaginatedListItem key={idx} booking={val} height={50} navigation={navigation}/>
                         })
                     }
                     {

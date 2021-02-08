@@ -47,3 +47,30 @@ export const tryRestoreUserAsync = async () => {
         successToast('Successfully restored last session...');
     }
 }
+
+export const registerUserAsync = async (data) => {
+    const response = await fetch(`${API_URL}/v${API_V}/users`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+    if(response.ok) {
+        const {securityToken} = await response.json();
+        const login = data.login;
+        // state setting
+        tokenState.set(securityToken);
+        loginState.set(login);
+        // async storage
+        await setItemAsync(TOKEN_STRING, securityToken);
+        await setItemAsync("login", login);
+        // toast!
+        successToast('You registered successfully!');
+        return true;
+    }
+    else {
+        errorToast('Registration failed.');
+        return false;
+    }
+}
