@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.bookly</groupId>
 	<artifactId>backend</artifactId>
-	<version>0.8b</version>
+	<version>0.25b</version>
 	<name>backend</name>
 	<description>Bookly team backend</description>
 
