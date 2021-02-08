@@ -92,7 +92,7 @@ const AddUserPage = (props) => {
             <input
               type="text"
               className="form-control"
-              placeholder="username"
+              placeholder="Username"
               name="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -108,7 +108,7 @@ const AddUserPage = (props) => {
             <input
               type="password"
               className="form-control"
-              placeholder="password"
+              placeholder="Password"
               name="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
