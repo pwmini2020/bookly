@@ -30,7 +30,7 @@ public class LoginController {
         if (user != null) {
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(6);
             if (encoder.matches(user.getPassword(), credentials.getPassword())) {
-                return new ResponseEntity<>(new Token(user.getSecurityToken()), HttpStatus.OK);
+                return new ResponseEntity<>(new Token(user.getId(), user.getSecurityToken()), HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
             }
