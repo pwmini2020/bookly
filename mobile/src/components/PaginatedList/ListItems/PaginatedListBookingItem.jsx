@@ -1,17 +1,21 @@
 import React from 'react';
 import {TouchableOpacity, StyleSheet, View, Text} from "react-native";
 
-const PaginatedListItem = ({navigation, item, height}) => {
+const PaginatedListBookingItem = ({navigation, booking, height, bookingId,}) => {
     return (
         <TouchableOpacity
             style={{...styles.main, height: height}}
-            onPress={() => navigation.navigate("Details", {item})}
+            onPress={() => navigation.navigate("Details", {
+                item: {
+                    ...booking.item,
+                    bookingId: booking.id
+                }})}
         >
             <View style={{...styles.main, height: height}} >
                 <View style={styles.row}>
-                    <Text style={styles.name}>{item.item.name.toUpperCase()}</Text>
+                    <Text style={styles.name}>{booking.item.name.toUpperCase()}</Text>
                     {
-                        item.active !== undefined && <Text>{item.active ? '🟢' : '🔴'}</Text>
+                        booking.active !== undefined && <Text>{booking.active ? '🟢' : '🔴'}</Text>
                     }
                 </View>
             </View>
@@ -42,4 +46,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default PaginatedListItem;
+export default PaginatedListBookingItem;

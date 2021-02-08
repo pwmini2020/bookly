@@ -24,6 +24,7 @@
 * [react-native-bcrypt](https://www.npmjs.com/package/react-native-bcrypt) is used for `bcrypt` algorithm (used for client-side encrypting.
 * [expo-av](https://docs.expo.io/versions/latest/sdk/av/) is used for playing music on the login screen.
 * [@react-native-community/datetimepicker](https://github.com/react-native-datetimepicker/datetimepicker) is used for DateTime picker (works properly only on `android`).
+* [react-native-elements](https://reactnativeelements.com/docs/tooltip/#usage) is used for tooltip showing at error on the `Register` screen.
 
 ## Features and notes
 * App is styled only for Android.

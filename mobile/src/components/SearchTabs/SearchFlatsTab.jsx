@@ -3,6 +3,7 @@ import {View, StyleSheet, Button} from 'react-native'
 import DateTimePicker from '@react-native-community/datetimepicker';
 import DialogInput from 'react-native-dialog-input'
 import {resourceTypes} from "../../types/resource.types";
+import {errorToast} from "../../helpers/toast.helper";
 
 const SearchFlatsTab = ({navigation}) => {
 	//Date States
@@ -18,12 +19,28 @@ const SearchFlatsTab = ({navigation}) => {
 	const [flatsNo, setFlatsNo] = useState("");
 	const [flatsVerified, setFlatsVerified] = useState(true);
 
+	const verifyInput = () => {
+		if(!dateSet) {
+			errorToast('Set date.');
+			return false;
+		}
+		if(!location) {
+			errorToast('Set location');
+			return false;
+		}
+		if(!flatsNo) {
+			errorToast('Set number of guests.');
+			return false;
+		}
+		return true;
+	}
+
 	//Flat functions
 	function isInt(value) {
 	  if (isNaN(value)) {
 	    return false;
 	  }
-	  var x = parseFloat(value);
+	  const x = parseFloat(value);
 	  return (x | 0) === x;
 	}	
 
@@ -72,7 +89,22 @@ const SearchFlatsTab = ({navigation}) => {
 				<Button onPress={() => setFlatsShow(true)} title={flatsNo=="" ? "Number of Guests" : flatsNo}/>
 			</View>
 			<View style={[styles.searchButton, styles.button]}>
-				<Button title="Search" color="red"/>
+				<Button
+					title="Search"
+					color="red"
+					onPress={() => {
+						if(verifyInput()) {
+							navigation.navigate("Search", {
+								options: {
+									location,
+									flatsNo,
+									date
+								},
+								resource: resourceTypes.flats
+							});
+						}
+					}}
+				/>
 			</View>
 		</View>
 		<View style={styles.viewBooking}>

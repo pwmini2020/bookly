@@ -4,6 +4,7 @@
     "description": "Mobile app for Bookly ecosystem, allowing to book cars, flats and parkings.",
     "slug": "bookly-mobile",
     "icon": "./assets/logo.png",
-    "owner": "bookly"
+    "owner": "bookly",
+    "githubUrl": "https://github.com/pwmini2020/bookly/"
   }
 }

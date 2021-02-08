@@ -3,10 +3,10 @@ import {errorToast} from "./toast.helper";
 
 export const setItemAsync = async (key, value) => {
     try {
-        await AsyncStorage.setItem(`@${key}`, value)
+        await AsyncStorage.setItem(`@${key}`, value.toString())
     } catch (e) {
         if(process.env.APP_ENV === 'development') {
-            errorToast(e.message());
+            errorToast(e.message);
         }
     }
 }
@@ -27,7 +27,7 @@ export const removeItemAsync = async (key) => {
         await AsyncStorage.removeItem(`@${key}`);
     } catch (e) {
         if(process.env.APP_ENV === 'development') {
-            errorToast(e.message());
+            errorToast(e.message);
         }
     }
 }

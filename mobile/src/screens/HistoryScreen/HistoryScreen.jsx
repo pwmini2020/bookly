@@ -1,13 +1,12 @@
 import React from 'react';
 import {Text, View} from 'react-native';
-import TabSwitcher from "../../components/TabSwitcher";
+import TabSwitcher from "../../components/TabSwitcher/TabSwitcher";
 import PaginatedList from "../../components/PaginatedList/PaginatedList";
 import {buttonTypes} from "../../types/button.types";
 import {resourceTypes} from "../../types/resource.types";
 import {loginState} from "../../state";
 
 const HistoryScreen = ({navigation, route}) => {
-    const login = loginState.useValue();
     const params = route.params;
 
     return (
@@ -18,12 +17,12 @@ const HistoryScreen = ({navigation, route}) => {
             }}
         >
             <TabSwitcher caller={params.active}
-                activeCars={<PaginatedList type={buttonTypes.cancel} resource={resourceTypes.cars} login={login}
+                activeCars={<PaginatedList type={buttonTypes.cancel} resource={resourceTypes.cars}
                                            navigation={navigation}/>}
-                activeFlats={<PaginatedList type={buttonTypes.cancel} resource={resourceTypes.flats} login={login}
+                activeFlats={<PaginatedList type={buttonTypes.cancel} resource={resourceTypes.flats}
                                             navigation={navigation}/>}
                 activeParking={<PaginatedList type={buttonTypes.cancel} resource={resourceTypes.parking}
-                                              login={login} navigation={navigation}/>}
+                                               navigation={navigation}/>}
             />
         </View>
     )

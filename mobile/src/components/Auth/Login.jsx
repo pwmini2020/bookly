@@ -9,8 +9,8 @@ import {
     StyleSheet
 } from "react-native";
 import { Audio } from 'expo-av';
-import {errorToast} from "../helpers/toast.helper";
-import {authenticateUserAsync} from "../services/auth.service";
+import {errorToast} from "../../helpers/toast.helper";
+import {authenticateUserAsync} from "../../services/auth.service";
 import bcrypt from 'react-native-bcrypt';
 
 const Login = ({navigation}) => {
@@ -23,7 +23,7 @@ const Login = ({navigation}) => {
     // Sound playing
     const playSound = async () => {
         const { sound } = await Audio.Sound.createAsync(
-            require('../../assets/jazz.mp3')
+            require('../../../assets/jazz.mp3')
         );
         await setSound(sound);
         await sound.setIsLoopingAsync(true);
@@ -141,7 +141,7 @@ const Login = ({navigation}) => {
                         ...styles.logo,
                         transform: [{rotate: rotateData}],
                     }}
-                    source={require('../../assets/logo.png')}
+                    source={require('../../../assets/logo.png')}
                 />
             </TouchableOpacity>
         </View>
