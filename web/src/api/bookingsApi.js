@@ -3,7 +3,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 const getSortType = (sortBy) => {
   switch (sortBy) {
     case "username":
-      return "owner";
+      return "owner.login";
     case "type":
       return "itemType";
     default:
