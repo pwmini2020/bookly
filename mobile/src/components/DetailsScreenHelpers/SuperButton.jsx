@@ -5,7 +5,7 @@ import {errorToast, successToast} from "../../helpers/toast.helper";
 
 const SuperButton = ({type, callback, params, navigation}) => {
 
-    const [style, setStyle] = React.useState();
+    const [style, setStyle] = React.useState({});
     const [text, setText] = React.useState("");
 
 
@@ -25,7 +25,7 @@ const SuperButton = ({type, callback, params, navigation}) => {
     return (
         <TouchableOpacity
             onPress={() => {
-                callback(params).then(r => successToast(r.status));
+                callback(params);
                 navigation.goBack();
             }}
             style={style}

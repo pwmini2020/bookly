@@ -43,9 +43,6 @@ const SearchCarsTab = ({navigation}) => {
             errorToast('Set location.');
             return false;
         }
-        if(!carType) {
-            errorToast('Set car type.');
-        }
         return true;
     }
 

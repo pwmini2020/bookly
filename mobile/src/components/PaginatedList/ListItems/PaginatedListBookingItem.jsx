@@ -1,7 +1,7 @@
 import React from 'react';
 import {TouchableOpacity, StyleSheet, View, Text} from "react-native";
 
-const PaginatedListItem = ({navigation, booking, height}) => {
+const PaginatedListBookingItem = ({navigation, booking, height, bookingId,}) => {
     return (
         <TouchableOpacity
             style={{...styles.main, height: height}}
@@ -46,4 +46,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default PaginatedListItem;
+export default PaginatedListBookingItem;

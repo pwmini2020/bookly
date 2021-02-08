@@ -13,6 +13,7 @@ const RegisterScreen = ({navigation}) => {
     const [address, setAddress] = useState("");
     const [country, setCountry] = useState("");
     const [checked, setChecked] = useState(false);
+    const [phoneNumber, setPhoneNumber] = useState("");
 
     function validateEmail(email) {
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -123,7 +124,7 @@ const RegisterScreen = ({navigation}) => {
                     value={address}
                     onChangeText={text => setAddress(text)}
                     clearButtonMode="while-editing"
-                    textContentType="cityAddress"
+                    textContentType="fullStreetAddress"
                 />
                 {(!address && checked) && <Tooltip
                     popover={<Text>Provide address!</Text>}
@@ -151,6 +152,24 @@ const RegisterScreen = ({navigation}) => {
                     <Icon name="error" size={35} color="red"/>
                 </Tooltip>}
             </View>
+            <View style={styles.row}>
+                <TextInput
+                    style={styles.input}
+                    autoFocus={false}
+                    placeholder="Phone number"
+                    value={phoneNumber}
+                    onChangeText={text => setPhoneNumber(text)}
+                    clearButtonMode="while-editing"
+                    textContentType="telephoneNumber"
+                />
+                {(!country && checked) && <Tooltip
+                    popover={<Text>Provide phone number!</Text>}
+                    withOverlay={false}
+                    backgroundColor="pink"
+                >
+                    <Icon name="error" size={35} color="red"/>
+                </Tooltip>}
+            </View>
             <TouchableOpacity
                 onPress={async () => {
                     const data = {
@@ -160,7 +179,8 @@ const RegisterScreen = ({navigation}) => {
                         firstName,
                         lastName,
                         address,
-                        country
+                        country,
+                        phoneNumber
                     };
                     setChecked(true);
                     if(await registerUserAsync(data)) {

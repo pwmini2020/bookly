@@ -3,14 +3,21 @@ import {View, Image, Text} from "react-native";
 import {splitString} from "../../helpers/string.helper";
 import {ignore} from "../../types/ignore.keys";
 import SuperButton from "./SuperButton";
-import {deleteBookingAsync} from "../../services/history.service";
+import {deleteBookingAsync} from "../../services/bookings.service";
 import {buttonTypes} from "../../types/button.types";
 
 const DetailsComponent = ({image, description, navigation}) => {
 
     const renderItem = (k ,v) => {
         if(!ignore.includes(k)) {
-            return <Text key={k}>{splitString(k)} : {v.toString()}</Text>
+
+            return (
+                <View key={k} style={{flexDirection: 'row', alignContent: 'center',}}>
+                    <Text style={{width: '40%', marginHorizontal: '5%',fontWeight: 'bold',fontSize: 20 }}>{splitString(k).toUpperCase()}</Text>
+                    <Text style={{width: '40%', marginHorizontal: '5%', fontSize: 20 }}>{v.toString()}</Text>
+                </View>
+                )
+
         }
     }
 
@@ -27,12 +34,6 @@ const DetailsComponent = ({image, description, navigation}) => {
                     return renderItem(key, value);
                 })
             }
-            <SuperButton
-                navigation={navigation}
-                callback={deleteBookingAsync}
-                params={description.bookingId}
-                type={description.bookingId ? buttonTypes.cancel : buttonTypes.book}
-            />
         </View>
     )
 }

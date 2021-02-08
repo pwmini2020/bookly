@@ -6,7 +6,7 @@ import {createStackNavigator} from "@react-navigation/stack";
 import {NavigationContainer} from "@react-navigation/native";
 import HomeScreen from "./src/screens/HomeScreen/HomeScreen";
 import {logoutUserAsync} from "./src/services/auth.service";
-import {tokenState, loginState} from "./src/state";
+import {tokenState, loginState, userIdState} from "./src/state";
 import { LogBox, YellowBox } from 'react-native';
 import RegisterScreen from "./src/screens/RegisterScreen/RegisterScreen";
 import HistoryScreen from "./src/screens/HistoryScreen/HistoryScreen";
@@ -124,7 +124,7 @@ export default function App() {
                               options={{
                                   headerShown: true,
                                   headerTitle: (
-                                      `Bookly${appEnv !== 'production' ? `[${appEnv}] - ${loginState.useValue()}` : ""}`
+                                      `Bookly${appEnv !== 'production' ? `[${appEnv}] - ${userIdState.useValue()}` : ""}`
                                   ),
                                   headerStyle: {...styles.headerStyle},
                                   headerTitleAlign: "center",

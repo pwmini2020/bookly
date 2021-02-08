@@ -5,11 +5,11 @@ import {buttonTypes} from "../../types/button.types";
 
 const SearchListScreen = ({navigation, route}) => {
     return (
-        <View>
-            <Text>Some.</Text>
+        <View style={{backgroundColor: 'white'}}>
             <PaginatedList type={buttonTypes.book}
                            resource={route.params.resource}
                            navigation={navigation}
+                           params={route.params.options}
             />
         </View>
 
