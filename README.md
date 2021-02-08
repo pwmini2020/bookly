@@ -18,3 +18,5 @@ http://bookly-web.herokuapp.com/
 ## Mobile App <a name = "mobile_app"></a>
 
 The mobile app is dedicated to customers.
+https://expo.io/@bookly/projects/bookly-mobile
+[Check README mobile for more info.](https://github.com/pwmini2020/bookly/blob/master/mobile/README.md)
